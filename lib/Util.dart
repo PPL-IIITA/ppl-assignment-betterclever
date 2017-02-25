@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:math' as Math;
 import 'package:ValentinesDay/model/Boy.dart';
+import 'package:ValentinesDay/model/Gift.dart';
 import 'package:ValentinesDay/model/Girl.dart';
 import 'package:csv/csv.dart';
 
@@ -86,8 +87,8 @@ class TestingUtils {
 
     while(num-- > 0) {
 
-      double price = 10 + rand.nextDouble()*90;
-      double value = 10 + rand.nextDouble()*90;
+      double price = 10 + rand.nextDouble()*900;
+      double value = 10 + rand.nextDouble()*900;
 
       String type;
 
@@ -166,18 +167,56 @@ class Utils{
     File BoysCsvFile = new File(_boysFileName);
 
     String csvString = BoysCsvFile.readAsStringSync();
-    List<List<dynamic>> rowsAsListOfValues = const CsvToListConverter().convert(csvString);
+    List<List> rowsAsListOfValues = const CsvToListConverter().convert(csvString);
 
     assert (rowsAsListOfValues.length >= count);
 
     for(int i=0;i<count;i++){
-      List<dynamic> values = rowsAsListOfValues[i];
+      List values = rowsAsListOfValues[i];
       Boy boy = new Boy(values[0],values[1],values[2],values[3],values[4],values[5]);
       boyList.add(boy);
     }
 
     return boyList;
   }
+
+  static List<Gift> getGifts(){
+
+    List giftList = new List<Gift>();
+    File giftCSVFile = new File(_giftsFileName);
+
+    String csvString = giftCSVFile.readAsStringSync();
+    List<List> rowsAsListOfValues = const CsvToListConverter().convert(csvString);
+
+    for(List values in rowsAsListOfValues ){
+
+      Gift gift ;
+
+      /// Decides the type: Essential, Luxury, Utility
+      switch(values[0]){
+        case "Utility": gift = new Gift.newUtility(values[1],values[2],values[3],values[4]);
+        break;
+        case "Essential": gift = new Gift.newEssential(values[1],values[2]);
+        break;
+        case "Luxury": gift = new Gift.newLuxury(values[1],values[2],values[3],values[4]);
+        break;
+      }
+
+      giftList.add(gift);
+    }
+    return giftList;
+  }
+
+  static List<Boy> getCommittedBoys(List<Boy> boyList){
+    List<Boy> committedBoys = new List<Boy>();
+    for(Boy boy in boyList){
+      if(boy.girlfriend!=null){
+        committedBoys.add(boy);
+      }
+    }
+    return committedBoys;
+  }
+
 
 
 }

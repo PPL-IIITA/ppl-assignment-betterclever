@@ -1,6 +1,8 @@
 import 'Boy.dart';
 import 'dart:math' as Math;
 
+import 'package:ValentinesDay/model/Gift.dart';
+
 class Girl {
   String name; //Name of Girl
   int attractiveness; //Attractiveness on scale of 1-10
@@ -63,7 +65,7 @@ class Girl {
           totalReceivedGiftAmount[2];
 
       // The happiness of Desperate depends exponentially on Amount of Gifts
-      happiness = Math.exp(netGiftAmount);
+      happiness = Math.exp(netGiftAmount/10000);
     }
   }
 
@@ -96,5 +98,28 @@ class Girl {
 
   bool isCommitted(){
     return boyfriend != null;
+  }
+
+  void receiveGiftBasket(GiftBasket basket){
+    //print(name);
+    //print(basket.giftList.length);
+    //print("maintenance budget: "+ maintenanceBudget.toString());
+    //print("Gifted Amount:"+ basket.totalGiftedAmount.toString());
+    for(Gift g in basket.giftList){
+      switch(g.type){
+        case "Essential":
+          totalReceivedGiftAmount[0] += g.price;
+          totalReceivedGiftValue[0] += g.value;
+          break;
+        case "Luxury":
+          totalReceivedGiftAmount[1] += g.price;
+          totalReceivedGiftValue[1] += g.value;
+          break;
+        case "Utility":
+          totalReceivedGiftAmount[2] += g.price;
+          totalReceivedGiftValue[2] += g.value;
+      }
+    }
+    updateHappiness();
   }
 }

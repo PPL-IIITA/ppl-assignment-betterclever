@@ -1,4 +1,5 @@
 import 'Girl.dart';
+import 'package:ValentinesDay/model/Gift.dart';
 
 class Boy{
 
@@ -51,5 +52,64 @@ class Boy{
         'girlfriend: ' + (girlfriend != null ? girlfriend.name : 'null' )+ '}';
   }
 
+  void sendGiftBasket(GiftList gifts) {
+    GiftBasket basket = new GiftBasket();
+    //print(type);
+    //print(budget);
+    switch(type){
+      case "Miser":
+        while(basket.totalGiftedAmount < girlfriend.maintenanceBudget){
+          Gift gift = gifts.lowestAmountGift;
+          //print(gift.price);
+          if(gift.price <= budget){
+            basket.addGift(gift);
+            gifts.removeLowest();
+          }
+          else{
+            break;
+          }
+        }
+        break;
+      case "Generous":
+        while(basket.totalGiftedAmount < budget){
+          Gift gift = gifts.lowestAmountGift;
+          //print(gift.price);
+          if(gift.price + basket.totalGiftedAmount > budget){
+            break;
+          }
+          if(gift.price <= budget){
+            basket.addGift(gift);
+            gifts.removeLowest();
+          }
+          else{
+            break;
+          }
+        }
+        break;
+      case "Geek":
+        //print("I am geek");
+        while(basket.totalGiftedAmount < girlfriend.maintenanceBudget){
+          //print(basket.totalGiftedAmount);
+          Gift gift = gifts.lowestAmountGift;
+          //print(gift.price);
+          if(gift.price <= budget){
+            basket.addGift(gift);
+            gifts.removeLowest();
+          }
+          else{
+            break;
+          }
+        }
+        Gift lowestAmountLuxuryGift = gifts.lowestAmountLuxuryGift;
+        if(lowestAmountLuxuryGift!=null){
+          if(basket.totalGiftedAmount + lowestAmountLuxuryGift.price < budget){
+            basket.addGift(lowestAmountLuxuryGift);
+          }
+        }
+        break;
+    }
+    girlfriend.receiveGiftBasket(basket);
+    updateHappiness();
+  }
 
 }

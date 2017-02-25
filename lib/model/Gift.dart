@@ -29,6 +29,53 @@ class Gift {
         'utilityValue: $utilityValue, '
         'utilityClass: $utilityClass}';
   }
+}
 
+class GiftBasket {
 
+  List<Gift> _giftList;
+
+  GiftBasket() : _giftList = new List<Gift>();
+
+  void addGift(Gift gift){
+    _giftList.add(gift);
+  }
+
+  double get totalGiftedAmount {
+    double d = 0.0;
+    for(Gift g in _giftList){
+      d += g.price;
+    }
+    return d;
+  }
+
+  List get giftList{
+    return _giftList;
+  }
+}
+
+class GiftList {
+  List<Gift> _giftList;
+
+  GiftList.fromList(this._giftList);
+
+  Gift get lowestAmountGift {
+    _giftList.sort((a, b) => a.price.compareTo(b.price));
+    return _giftList[0];
+  }
+
+  void removeLowest(){
+    _giftList.removeAt(0);
+  }
+
+  Gift get lowestAmountLuxuryGift {
+    Gift gift;
+    for(Gift g in _giftList){
+      if(g.type == "Luxury"){
+        gift = g;
+        break;
+      }
+    }
+    return gift;
+  }
 }
