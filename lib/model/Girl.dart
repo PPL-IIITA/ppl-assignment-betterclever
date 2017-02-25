@@ -66,4 +66,35 @@ class Girl {
       happiness = Math.exp(netGiftAmount);
     }
   }
+
+
+  @override
+  String toString() {
+    return 'Girl{name: $name, '
+        'attractiveness: $attractiveness, '
+        'intelligenceLevel: $intelligenceLevel, '
+        'maintenanceBudget: $maintenanceBudget, '
+        'type: $type, '
+        'happiness: $happiness, '
+        'totalReceivedGiftAmount: $totalReceivedGiftAmount, '
+        'totalReceivedGiftValue: $totalReceivedGiftValue, '
+        'boyfriend: ' + (boyfriend != null ? boyfriend.name : 'null' )+ '}' ;
+  }
+
+  void assignBoyfriend(List<Boy> boyList) {
+    for (Boy b in boyList) {
+      if (b.girlfriend == null) {
+        if (maintenanceBudget <= b.budget
+            && attractiveness >= b.minAttractivenessRequired) {
+          b.girlfriend = this;
+          this.boyfriend = b;
+          return;
+        }
+      }
+    }
+  }
+
+  bool isCommitted(){
+    return boyfriend != null;
+  }
 }

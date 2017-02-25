@@ -1,12 +1,14 @@
 import 'dart:io';
 import 'dart:math' as Math;
+import 'package:ValentinesDay/model/Boy.dart';
+import 'package:ValentinesDay/model/Girl.dart';
 import 'package:csv/csv.dart';
 
-class TestingUtils {
+String _boysFileName = "../generated_csv/boys.csv";
+String _girlsFileName = "../generated_csv/girls.csv";
+String _giftsFileName = "../generated_csv/gifts.csv";
 
-  static String _boysFileName = "generated_csv/boys.csv";
-  static String _girlsFileName = "generated_csv/girls.csv";
-  static String _giftsFileName = "generated_csv/gifts.csv";
+class TestingUtils {
 
   static storeBoysInCSV(int num){
 
@@ -19,6 +21,7 @@ class TestingUtils {
       String type;
       int attractiveness = 1+rand.nextInt(10);
       int intelligenceLevel = 1+rand.nextInt(10);
+      int minAttractivenesReq = 1+rand.nextInt(3);
       double budget = 100 + rand.nextDouble()*9000;
 
       switch (rand.nextInt(3)) {
@@ -34,7 +37,7 @@ class TestingUtils {
       }
 
       //Boy b = new Boy(name,type,attractiveness,intelligenceLevel,budget);
-      list.add([name,type,attractiveness,intelligenceLevel,budget]);
+      list.add([name,type,attractiveness,minAttractivenesReq,intelligenceLevel,budget]);
     }
 
     String csv = const ListToCsvConverter().convert(list);
@@ -133,5 +136,48 @@ class TestingUtils {
 
     return new String.fromCharCodes(codeUnits);
   }
+
+}
+
+class Utils{
+
+  static List<Girl> getGirls(int count){
+
+    List<Girl> girlList = new List<Girl>();
+    File girlsCsvFile = new File(_girlsFileName);
+
+    String csvString = girlsCsvFile.readAsStringSync();
+    List<List<dynamic>> rowsAsListOfValues = const CsvToListConverter().convert(csvString);
+
+    assert (rowsAsListOfValues.length >= count);
+
+    for(int i=0;i<count;i++){
+      List<dynamic> values = rowsAsListOfValues[i];
+      Girl girl = new Girl(values[0],values[1],values[2],values[3],values[4]);
+      girlList.add(girl);
+    }
+
+    return girlList;
+  }
+
+  static List<Boy> getBoys(int count){
+
+    List<Boy> boyList = new List<Boy>();
+    File BoysCsvFile = new File(_boysFileName);
+
+    String csvString = BoysCsvFile.readAsStringSync();
+    List<List<dynamic>> rowsAsListOfValues = const CsvToListConverter().convert(csvString);
+
+    assert (rowsAsListOfValues.length >= count);
+
+    for(int i=0;i<count;i++){
+      List<dynamic> values = rowsAsListOfValues[i];
+      Boy boy = new Boy(values[0],values[1],values[2],values[3],values[4],values[5]);
+      boyList.add(boy);
+    }
+
+    return boyList;
+  }
+
 
 }

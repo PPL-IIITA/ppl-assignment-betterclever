@@ -9,10 +9,13 @@ class Boy{
 
   String type; //type of Boy
 
+  int minAttractivenessRequired; // min attractiveness requirement from a Girl
+
   double happiness = 0.0; //happiness amount. Initially Zero
   double totalGiftedAmount = 0.0; //total value of gifts gifted to Girlfriend
 
-  Boy(this.name, this.type, this.attractiveness, this.intelligenceLevel, this.budget);
+  Boy(this.name, this.type, this.attractiveness, this.minAttractivenessRequired,
+      this.intelligenceLevel, this.budget);
 
   Girl girlfriend = null;
 
@@ -34,4 +37,19 @@ class Boy{
         happiness = 10.00 * girlfriend.intelligenceLevel;
     }
   }
+
+  @override
+  String toString() {
+    return 'Boy{name: $name, '
+        'attractiveness: $attractiveness, '
+        'intelligenceLevel: $intelligenceLevel, '
+        'minAttractivenessRequired: $minAttractivenessRequired, '
+        'budget: $budget, '
+        'type: $type, '
+        'happiness: $happiness, '
+        'totalGiftedAmount: $totalGiftedAmount, '
+        'girlfriend: ' + (girlfriend != null ? girlfriend.name : 'null' )+ '}';
+  }
+
+
 }

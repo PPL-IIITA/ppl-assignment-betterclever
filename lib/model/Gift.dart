@@ -18,4 +18,17 @@ class Gift {
 
   Gift.newUtility(this.price,this.value,this.utilityValue,this.utilityClass):
         type = "Utility";
+
+  @override
+  String toString() {
+    return 'Gift{price: $price, '
+        'value: $value, '
+        'type: $type, '
+        'difficultyToObtain: $difficultyToObtain, '
+        'luxuryRating: $luxuryRating, '
+        'utilityValue: $utilityValue, '
+        'utilityClass: $utilityClass}';
+  }
+
+
 }
