@@ -1,6 +1,12 @@
 #PPL Assignment
 PPL Assignment by Pranjal Paliwal (RIT2015015)
 
+## Documentation
+Documnetation is generated using dartdoc (https://github.com/dart-lang/dartdoc)
+
+It is live on Github Pages and can be viewed here: 
+https://ppl-iiita.github.io/ppl-assignment-betterclever/
+
 ## Setting up dartlang on your system
 
 * ArchLinux : Install using AUR
