@@ -1,43 +1,57 @@
+/// This module contains the Class to Represent a Boy and related objects
+library Boy;
+/*
+* Created by betterclever
+* */
+
 import 'Girl.dart';
+import 'package:ValentinesDay/Util.dart';
 import 'package:ValentinesDay/model/Gift.dart';
 
+/// Class to represent a Boy
 class Boy{
 
-  String name; //Name of Boy
-  int attractiveness; //Attractiveness on scale of 1-10
-  int intelligenceLevel; //intelligence level on scale of 1-10
-  double budget; //Budget of Boy
+  /// Name of Boy
+  String name;
+  ///Attractiveness on scale of 1-10
+  int attractiveness;
+  ///intelligence level on scale of 1-10
+  int intelligenceLevel;
+  ///Budget of Boy
+  double budget;
+  ///Type of Boy: Miser, Generous, Geek
+  String type;
+  ///min attractiveness requirement from a Girl
+  int minAttractivenessRequired;
+  ///Happiness amount. Initially Zero
+  double happiness = 0.0;
+  ///Total value of gifts gifted to Girlfriend
+  double totalGiftedAmount = 0.0;
 
-  String type; //type of Boy
-
-  int minAttractivenessRequired; // min attractiveness requirement from a Girl
-
-  double happiness = 0.0; //happiness amount. Initially Zero
-  double totalGiftedAmount = 0.0; //total value of gifts gifted to Girlfriend
-
+  /// Constructor to initialize a Boy
   Boy(this.name, this.type, this.attractiveness, this.minAttractivenessRequired,
       this.intelligenceLevel, this.budget);
 
   Girl girlfriend = null;
 
+  /// Updates the happiness of the Boy. Call after gifting basket to Girlfriend
   void updateHappiness(){
+    /// The happiness of a Miser depends on total unspent money from Budget
     if(type == "Miser"){
-      // The happiness of a Miser depends on total unspent money from Budget
       happiness = budget - totalGiftedAmount;
     }
-
+    /// The happiness of Generous depends on happiness of Girlfriend
     if(type == "Generous"){
-      // The happiness of Generous depends on happiness of Girlfriend
       if(Girl!=null)
         happiness = girlfriend.happiness;
     }
-
+    /// The happiness of Geek is given by intelligence of Girlfriend
     if(type == "Geek"){
-      // The happiness of Geek is given by intelligence of Girlfriend
       if(Girl!=null)
         happiness = 10.00 * girlfriend.intelligenceLevel;
     }
   }
+
 
   @override
   String toString() {
@@ -52,15 +66,13 @@ class Boy{
         'girlfriend: ' + (girlfriend != null ? girlfriend.name : 'null' )+ '}';
   }
 
+  /// Sends a Gift Basket to the Girlfriend
   void sendGiftBasket(GiftList gifts) {
     GiftBasket basket = new GiftBasket();
-    //print(type);
-    //print(budget);
     switch(type){
       case "Miser":
-        while(basket.totalGiftedAmount < girlfriend.maintenanceBudget){
+        while(basket.totalWorth < girlfriend.maintenanceBudget){
           Gift gift = gifts.lowestAmountGift;
-          //print(gift.price);
           if(gift.price <= budget){
             basket.addGift(gift);
             gifts.removeLowest();
@@ -71,10 +83,10 @@ class Boy{
         }
         break;
       case "Generous":
-        while(basket.totalGiftedAmount < budget){
+        while(basket.totalWorth < budget){
           Gift gift = gifts.lowestAmountGift;
           //print(gift.price);
-          if(gift.price + basket.totalGiftedAmount > budget){
+          if(gift.price + basket.totalWorth > budget){
             break;
           }
           if(gift.price <= budget){
@@ -88,7 +100,7 @@ class Boy{
         break;
       case "Geek":
         //print("I am geek");
-        while(basket.totalGiftedAmount < girlfriend.maintenanceBudget){
+        while(basket.totalWorth < girlfriend.maintenanceBudget){
           //print(basket.totalGiftedAmount);
           Gift gift = gifts.lowestAmountGift;
           //print(gift.price);
@@ -102,12 +114,17 @@ class Boy{
         }
         Gift lowestAmountLuxuryGift = gifts.lowestAmountLuxuryGift;
         if(lowestAmountLuxuryGift!=null){
-          if(basket.totalGiftedAmount + lowestAmountLuxuryGift.price < budget){
+          if(basket.totalWorth + lowestAmountLuxuryGift.price < budget){
             basket.addGift(lowestAmountLuxuryGift);
+            gifts.removeGift(lowestAmountLuxuryGift);
           }
         }
         break;
     }
+
+    Log.info("GiftBasket","Boy: "+ name + " sent giftbasket with gift amount "
+        + basket.totalWorth.toString() + "to Girl: " + girlfriend.name);
+
     girlfriend.receiveGiftBasket(basket);
     updateHappiness();
   }

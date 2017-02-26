@@ -1,3 +1,10 @@
+/// Util Library to abstract out basic file I/O for the project
+/// and easy Logging
+library Util;
+/*
+* Created by betterclever
+* */
+
 import 'dart:io';
 import 'dart:math' as Math;
 import 'package:ValentinesDay/model/Boy.dart';
@@ -9,8 +16,12 @@ String _boysFileName = "../generated_csv/boys.csv";
 String _girlsFileName = "../generated_csv/girls.csv";
 String _giftsFileName = "../generated_csv/gifts.csv";
 
+
+/// Helper Class for Generating Random Test Cases and
+/// storing in csv files
 class TestingUtils {
 
+  /// Helper method to store Boys in csv file.
   static storeBoysInCSV(int num){
 
     var rand = new Math.Random();
@@ -48,6 +59,7 @@ class TestingUtils {
 
   }
 
+  /// Helper method to store Girls in csv file.
   static storeGirlsInCSV(int num){
     var rand = new Math.Random();
     List<List<dynamic>> list = new List<List<dynamic>>();
@@ -81,6 +93,7 @@ class TestingUtils {
     file.writeAsStringSync(csv);
   }
 
+  /// Helper method to store Gifts in csv file.
   static storeGiftsInCSV(int num){
     var rand = new Math.Random();
     List<List<dynamic>> list = new List<List<dynamic>>();
@@ -140,8 +153,10 @@ class TestingUtils {
 
 }
 
+/// Helper Class to get input from csv
 class Utils{
 
+  /// Helper method to get list of Girls from generated csv
   static List<Girl> getGirls(int count){
 
     List<Girl> girlList = new List<Girl>();
@@ -161,6 +176,7 @@ class Utils{
     return girlList;
   }
 
+  /// Helper method to get list of boys from generated csv
   static List<Boy> getBoys(int count){
 
     List<Boy> boyList = new List<Boy>();
@@ -180,6 +196,7 @@ class Utils{
     return boyList;
   }
 
+  /// Helper method to get list of Gifts from generated csv
   static List<Gift> getGifts(){
 
     List giftList = new List<Gift>();
@@ -206,17 +223,26 @@ class Utils{
     }
     return giftList;
   }
+}
 
-  static List<Boy> getCommittedBoys(List<Boy> boyList){
-    List<Boy> committedBoys = new List<Boy>();
-    for(Boy boy in boyList){
-      if(boy.girlfriend!=null){
-        committedBoys.add(boy);
-      }
-    }
-    return committedBoys;
+///Logging Utility to log events to log file
+  class Log  {
+
+  static File file = new File('ValentinesDay.log');
+
+  /// Method to Log debug level log to file.
+  static debug(String tag, String message){
+    DateTime now = new DateTime.now();
+    String logMessage = "Debug: " +now.toString() + ' ' + tag + ': ' + message;
+    file.writeAsStringSync(logMessage,mode: FileMode.APPEND);
   }
 
-
+  /// Method to Log information level log to file.
+  static info(String tag, String message){
+    DateTime now = new DateTime.now();
+    String logMessage = "Info: " +now.toString() +
+        ' ' + tag + ': ' + message + '\n';
+    file.writeAsStringSync(logMessage,mode: FileMode.APPEND);
+  }
 
 }

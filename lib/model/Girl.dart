@@ -1,74 +1,91 @@
+/// This library contains the Class to Represent a Girl and related objects
+library Girl;
+/*
+* Created by betterclever
+* */
+
 import 'Boy.dart';
 import 'dart:math' as Math;
 
+import 'package:ValentinesDay/Util.dart';
 import 'package:ValentinesDay/model/Gift.dart';
 
+/// Class to Represent a Girl
 class Girl {
-  String name; //Name of Girl
-  int attractiveness; //Attractiveness on scale of 1-10
-  int intelligenceLevel; //intelligence level on scale of 1-10
-  double maintenanceBudget; //Maintenance budget of Girl
 
-  String type; //type of Girl. Allowed values: "Choosy, Normal, Desperate"
+  /// Name of Girl
+  String name;
 
-  double happiness = 0.0; //happiness amount. Initially Zero
+  /// Attractiveness on scale of 1-10
+  int attractiveness;
 
-  /*
-    List of total Received Gift Amount from the Boyfriends
-    index 0: Essential Gift Amount
-    index 1: Luxury Gift Amount
-    index 2: Utility Gift Amount
-  */
-  List<double> totalReceivedGiftAmount = [0.0,0.0,0.0];
+  /// intelligence level on scale of 1-10
+  int intelligenceLevel;
 
-  /*
-    List of total Received Gift Value from the Boyfriends
-    index 0: Essential Gift Value
-    index 1: Luxury Gift Value
-    index 2: Utility Gift Value
-  */
-  List<double> totalReceivedGiftValue = [0.0,0.0,0.0];
+  /// Maintenance budget of Girl
+  double maintenanceBudget;
 
-  Boy boyfriend = null; //Boyfriend of Girl. `null` initially
+  /// Type of Girl. Allowed values: "Choosy, Normal, Desperate"
+  String type;
 
-  Girl(this.name, this.type, this.attractiveness, this.intelligenceLevel, this.maintenanceBudget);
+  /// Happiness amount. Initially Zero
+  double happiness = 0.0;
 
-  void updateHappiness(){
-    if(type == "Choosy"){
-      // The netGiftAmount for Choosy depends on cost of gifts but luxury gifts count double
+  /// List of total Received Gift Amount from the Boyfriends
+  ///
+  /// * index 0: Essential Gift Amount
+  /// * index 1: Luxury Gift Amount
+  /// * index 2: Utility Gift Amount
+  List<double> totalReceivedGiftAmount = [0.0, 0.0, 0.0];
+
+  ///  List of total Received Gift Value from the Boyfriends
+  ///
+  /// * index 0: Essential Gift Value
+  /// * index 1: Luxury Gift Value
+  /// * index 2: Utility Gift Value
+  List<double> totalReceivedGiftValue = [0.0, 0.0, 0.0];
+
+  /// Boyfriend of Girl. `null` initially
+  Boy boyfriend = null;
+
+  /// Constructor to initialize a Girl
+  Girl(this.name, this.type, this.attractiveness, this.intelligenceLevel,
+      this.maintenanceBudget);
+
+  /// Method to update happiness of a Girl according to logic
+  void updateHappiness() {
+    if (type == "Choosy") {
+      /// The netGiftAmount for Choosy depends on cost of gifts but luxury gifts count double
       double netGiftAmount = totalReceivedGiftAmount[0] +
           totalReceivedGiftAmount[1] +
-          2*totalReceivedGiftAmount[2];
+          2 * totalReceivedGiftAmount[2];
 
-      // The happiness of a Choosy Girl depends Logarithmically on totalReceivedGiftAmount
-      happiness = 10*Math.log(netGiftAmount + 10);
+      /// The happiness of a Choosy Girl depends Logarithmically on totalReceivedGiftAmount
+      happiness = 10 * Math.log(netGiftAmount + 10);
     }
 
-    if(type == "Normal"){
-
-      double netGiftAmount = totalReceivedGiftAmount[0]+
-          totalReceivedGiftAmount[1]+
+    if (type == "Normal") {
+      double netGiftAmount = totalReceivedGiftAmount[0] +
+          totalReceivedGiftAmount[1] +
           totalReceivedGiftAmount[2];
 
-      double netGiftValue = totalReceivedGiftValue[0]+
-          totalReceivedGiftValue[1]+
+      double netGiftValue = totalReceivedGiftValue[0] +
+          totalReceivedGiftValue[1] +
           totalReceivedGiftValue[2];
 
-      // The happiness of Normal Girl depends linearly on total received gift amount + value
+      /// The happiness of Normal Girl depends linearly on total received gift amount + value
       happiness = netGiftAmount + netGiftValue;
     }
 
-    if(type == "Desperate"){
-
-      double netGiftAmount = totalReceivedGiftAmount[0]+
-          totalReceivedGiftAmount[1]+
+    if (type == "Desperate") {
+      double netGiftAmount = totalReceivedGiftAmount[0] +
+          totalReceivedGiftAmount[1] +
           totalReceivedGiftAmount[2];
 
-      // The happiness of Desperate depends exponentially on Amount of Gifts
-      happiness = Math.exp(netGiftAmount/10000);
+      /// The happiness of Desperate depends exponentially on Amount of Gifts
+      happiness = Math.exp(netGiftAmount / 10000);
     }
   }
-
 
   @override
   String toString() {
@@ -80,33 +97,39 @@ class Girl {
         'happiness: $happiness, '
         'totalReceivedGiftAmount: $totalReceivedGiftAmount, '
         'totalReceivedGiftValue: $totalReceivedGiftValue, '
-        'boyfriend: ' + (boyfriend != null ? boyfriend.name : 'null' )+ '}' ;
+        'boyfriend: ' +
+        (boyfriend != null ? boyfriend.name : 'null') +
+        '}';
   }
 
+  /// Method to Assign Boyfriend to a Girl as per logic
   void assignBoyfriend(List<Boy> boyList) {
     for (Boy b in boyList) {
       if (b.girlfriend == null) {
-        if (maintenanceBudget <= b.budget
-            && attractiveness >= b.minAttractivenessRequired) {
+        if (maintenanceBudget <= b.budget &&
+            attractiveness >= b.minAttractivenessRequired) {
           b.girlfriend = this;
           this.boyfriend = b;
+          Log.info("Commitment", b.name + ' committed to ' + name);
           return;
         }
       }
     }
   }
 
-  bool isCommitted(){
+  /// returns the commitment status of a Girl
+  bool isCommitted() {
     return boyfriend != null;
   }
 
-  void receiveGiftBasket(GiftBasket basket){
-    //print(name);
-    //print(basket.giftList.length);
-    //print("maintenance budget: "+ maintenanceBudget.toString());
-    //print("Gifted Amount:"+ basket.totalGiftedAmount.toString());
-    for(Gift g in basket.giftList){
-      switch(g.type){
+  /// Method to Receive a GiftBasket from Boyfriend
+  void receiveGiftBasket(GiftBasket basket) {
+    for (Gift g in basket.giftList) {
+      Log.info("Gift Receipt ", "Gift with price " + g.price.toString() +
+          " and type " + g.type
+          + " receieved by Girl " + name);
+
+      switch (g.type) {
         case "Essential":
           totalReceivedGiftAmount[0] += g.price;
           totalReceivedGiftValue[0] += g.value;
