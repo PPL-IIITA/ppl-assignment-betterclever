@@ -1,3 +1,4 @@
+/*
 import 'package:ValentinesDay/Util.dart';
 
 main(List<String> arguments){
@@ -13,4 +14,4 @@ main(List<String> arguments){
   TestingUtils.storeGiftsInCSV(int.parse(arguments[2]));
 
   print('csv files generated successfully');
-}
+}*/

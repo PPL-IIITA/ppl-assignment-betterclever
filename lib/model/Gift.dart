@@ -5,49 +5,47 @@ library Gift;
 * */
 
 /// Class to represent a Gift
-class Gift {
+abstract class Gift {
 
   /// Cost of a Gift
   double price;
   /// Value of a Gift
   double value;
 
-  /// Type of a Gift: "Utility, Essential, Luxury"
-  String type;
+  Gift(this.price, this.value);
 
-  /// Difficulty rating of a Luxury Gift on a scale of 1-10. 0 for others
-  int difficultyToObtain;
-  /// Luxury rating of a Luxury Gift on a scale of 1-10. 0 for others
-  int luxuryRating;
+}
+
+class EssentialGift extends Gift{
+
+  EssentialGift(double price, double value) : super(price, value);
+
+}
+
+class UtilityGift extends Gift {
 
   /// Utility Value of Utility Gift. 0 for others.
   double utilityValue;
   /// Utility Class of a Utility Gift. null for others.
   String utilityClass;
 
-  /// Named Constructor to initialize a new Essential Gift
-  Gift.newEssential(this.price, this.value) : type = "Essential";
+  UtilityGift(double price, double value, this.utilityValue,
+      this.utilityClass) : super(price, value);
 
-  /// Named Constructor to initialize a new Luxury Gift
-  Gift.newLuxury(
-      this.price, this.value, this.difficultyToObtain, this.luxuryRating)
-      : type = "Luxury";
-
-  /// Named Constructor to initialize a new Utility Gift
-  Gift.newUtility(this.price, this.value, this.utilityValue, this.utilityClass)
-      : type = "Utility";
-
-  @override
-  String toString() {
-    return 'Gift{price: $price, '
-        'value: $value, '
-        'type: $type, '
-        'difficultyToObtain: $difficultyToObtain, '
-        'luxuryRating: $luxuryRating, '
-        'utilityValue: $utilityValue, '
-        'utilityClass: $utilityClass}';
-  }
 }
+
+class LuxuryGift extends Gift {
+
+  /// Difficulty rating of a Luxury Gift on a scale of 1-10.
+  int difficultyToObtain;
+  /// Luxury rating of a Luxury Gift on a scale of 1-10.
+  int luxuryRating;
+
+  LuxuryGift(double price, double value, this.difficultyToObtain,
+      this.luxuryRating) :super(price, value);
+
+}
+
 
 
 /// Custom Wrapper class to represent a GiftBasket sent by Boy to Girl. Wrapped
@@ -104,7 +102,7 @@ class GiftList {
   Gift get lowestAmountLuxuryGift {
     Gift gift;
     for (Gift g in _giftList) {
-      if (g.type == "Luxury") {
+      if (g is LuxuryGift) {
         gift = g;
         break;
       }
@@ -119,3 +117,5 @@ class GiftList {
 
 
 }
+
+

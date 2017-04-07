@@ -25,7 +25,7 @@ class _Couple {
     double compatibility = boy.budget - girl.maintenanceBudget;
     compatibility += (boy.attractiveness - girl.attractiveness).abs() * 100;
     compatibility +=
-        (boy.intelligenceLevel - girl.intelligenceLevel).abs() * 100;
+        (boy.intelligence - girl.intelligence).abs() * 100;
     return compatibility;
   }
 

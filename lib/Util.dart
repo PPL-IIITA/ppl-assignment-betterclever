@@ -1,9 +1,12 @@
+/*
 /// Util Library to abstract out basic file I/O for the project
 /// and easy Logging
 library Util;
+*/
 /*
 * Created by betterclever
-* */
+* *//*
+
 
 import 'dart:io';
 import 'dart:math' as Math;
@@ -245,4 +248,4 @@ class Utils{
     file.writeAsStringSync(logMessage,mode: FileMode.APPEND);
   }
 
-}
+}*/
