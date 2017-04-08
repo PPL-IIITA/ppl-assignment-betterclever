@@ -72,6 +72,14 @@ class GiftBasket {
     return d;
   }
 
+  double get totalValue {
+    double d = 0.0;
+    for (Gift g in _giftList) {
+      d += g.value;
+    }
+    return d;
+  }
+
   /// dart style getter to get list of Gifts.
   List get giftList {
     return _giftList;

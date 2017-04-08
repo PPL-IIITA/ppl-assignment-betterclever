@@ -1,11 +1,10 @@
-/*
 /// Util Library to abstract out basic file I/O for the project
 /// and easy Logging
 library Util;
-*/
+
 /*
-* Created by betterclever
-* *//*
+Created by betterclever
+*/
 
 
 import 'dart:io';
@@ -15,9 +14,9 @@ import 'package:ValentinesDay/model/Gift.dart';
 import 'package:ValentinesDay/model/Girl.dart';
 import 'package:csv/csv.dart';
 
-String _boysFileName = "../generated_csv/boys.csv";
-String _girlsFileName = "../generated_csv/girls.csv";
-String _giftsFileName = "../generated_csv/gifts.csv";
+String _boysFileName = "generated_csv/boys.csv";
+String _girlsFileName = "generated_csv/girls.csv";
+String _giftsFileName = "generated_csv/gifts.csv";
 
 
 /// Helper Class for Generating Random Test Cases and
@@ -36,23 +35,17 @@ class TestingUtils {
       String type;
       int attractiveness = 1+rand.nextInt(10);
       int intelligenceLevel = 1+rand.nextInt(10);
-      int minAttractivenesReq = 1+rand.nextInt(3);
+      int minAttractivenessReq = 1+rand.nextInt(3);
       double budget = 100 + rand.nextDouble()*9000;
 
       switch (rand.nextInt(3)) {
-        case 0:
-          type = "Miser";
-          break;
-        case 1:
-          type = "Generous";
-          break;
-        case 2:
-          type = "Geek";
-          break;
+        case 0: type = "Miser"; break;
+        case 1: type = "Generous"; break;
+        case 2: type = "Geek"; break;
       }
 
       //Boy b = new Boy(name,type,attractiveness,intelligenceLevel,budget);
-      list.add([name,type,attractiveness,minAttractivenesReq,intelligenceLevel,budget]);
+      list.add([name,type,attractiveness,minAttractivenessReq,intelligenceLevel,budget]);
     }
 
     String csv = const ListToCsvConverter().convert(list);
@@ -71,23 +64,23 @@ class TestingUtils {
 
       String name = _randomString(10);
       String type;
+      String criterion;
       int attractiveness = 1+rand.nextInt(10);
       int intelligenceLevel = 1+rand.nextInt(10);
       double maintenanceBudget = 100 + rand.nextDouble()*9000;
 
       switch (rand.nextInt(3)) {
-        case 0:
-          type = "Choosy";
-          break;
-        case 1:
-          type = "Normal";
-          break;
-        case 2:
-          type = "Desperate";
-          break;
+        case 0: type = "Choosy"; break;
+        case 1: type = "Normal"; break;
+        case 2: type = "Desperate"; break;
+      }
+      switch (rand.nextInt(3)) {
+        case 0: criterion = "Richness"; break;
+        case 1: criterion = "Attractiveness"; break;
+        case 2: criterion = "Intelligence"; break;
       }
 
-      list.add([name,type,attractiveness,intelligenceLevel,maintenanceBudget]);
+      list.add([name,type,attractiveness,intelligenceLevel,maintenanceBudget,criterion]);
     }
 
     String csv = const ListToCsvConverter().convert(list);
@@ -109,15 +102,9 @@ class TestingUtils {
       String type;
 
       switch (rand.nextInt(3)) {
-        case 0:
-          type = "Essential";
-          break;
-        case 1:
-          type = "Luxury";
-          break;
-        case 2:
-          type = "Utility";
-          break;
+        case 0: type = "Essential"; break;
+        case 1: type = "Luxury"; break;
+        case 2: type = "Utility"; break;
       }
 
       if(type == "Essential"){
@@ -172,7 +159,16 @@ class Utils{
 
     for(int i=0;i<count;i++){
       List<dynamic> values = rowsAsListOfValues[i];
-      Girl girl = new Girl(values[0],values[1],values[2],values[3],values[4]);
+
+      Girl girl;
+      switch(values[1]){
+        case "Choosy": girl = new ChoosyGirl(values[0],values[2],values[3],values[4],values[5]);
+        break;
+        case "Normal": girl = new NormalGirl(values[0],values[2],values[3],values[4],values[5]);
+        break;
+        case "Desperate": girl = new DesperateGirl(values[0],values[2],values[3],values[4],values[5]);
+        break;
+      }
       girlList.add(girl);
     }
 
@@ -192,7 +188,15 @@ class Utils{
 
     for(int i=0;i<count;i++){
       List values = rowsAsListOfValues[i];
-      Boy boy = new Boy(values[0],values[1],values[2],values[3],values[4],values[5]);
+      Boy boy;
+      switch(values[1]){
+        case "Miser": boy = new MiserBoy(values[0],values[2],values[3],values[4],values[5]);
+        break;
+        case "Generous": boy = new GenerousBoy(values[0],values[2],values[3],values[4],values[5]);
+        break;
+        case "Geek": boy = new GeekBoy(values[0],values[2],values[3],values[4],values[5]);
+        break;
+      }
       boyList.add(boy);
     }
 
@@ -214,11 +218,11 @@ class Utils{
 
       /// Decides the type: Essential, Luxury, Utility
       switch(values[0]){
-        case "Utility": gift = new Gift.newUtility(values[1],values[2],values[3],values[4]);
+        case "Utility": gift = new UtilityGift(values[1],values[2],values[3],values[4]);
         break;
-        case "Essential": gift = new Gift.newEssential(values[1],values[2]);
+        case "Essential": gift = new EssentialGift(values[1],values[2]);
         break;
-        case "Luxury": gift = new Gift.newLuxury(values[1],values[2],values[3],values[4]);
+        case "Luxury": gift = new LuxuryGift(values[1],values[2],values[3],values[4]);
         break;
       }
 
@@ -248,4 +252,4 @@ class Utils{
     file.writeAsStringSync(logMessage,mode: FileMode.APPEND);
   }
 
-}*/
+}

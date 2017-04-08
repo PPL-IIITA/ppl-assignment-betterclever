@@ -1,6 +1,6 @@
 library Person;
 
-class Person {
+abstract class Person {
 
   /// Name of Person
   String name;

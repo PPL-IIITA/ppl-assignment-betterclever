@@ -1,6 +1,7 @@
 /// This module contains the Class to Represent a Boy and related objects
 library Boy;
 
+import 'package:ValentinesDay/Util.dart';
 import 'package:ValentinesDay/model/Gift.dart';
 import 'package:ValentinesDay/model/Girl.dart';
 import 'package:ValentinesDay/model/Person.dart';
@@ -21,16 +22,16 @@ abstract class Boy extends Person {
   double happiness = 0.0;
 
   /// Total value of gifts gifted to Girlfriend
-  double totalGiftedValue;
+  double totalGiftedValue = 0.0;
 
   /// Total Amount of gifts gifted to Girlfriend
-  double totalGiftedAmount;
+  double totalGiftedAmount = 0.0;
 
   /// Girlfriend of Boy if he is committed. null otherwise
   Girl girlfriend = null;
 
   /// Getter for checking if boy is committed
-  bool get isCommitted => girlfriend == null;
+  bool get isCommitted => girlfriend != null;
 
   /// Constructor to initialize a boy
   Boy(String name, int attractiveness, int intelligence,
@@ -65,11 +66,21 @@ class MiserBoy extends Boy {
       else
         break;
     }
+
+    totalGiftedAmount += basket.totalWorth;
+    totalGiftedValue += basket.totalValue;
+
+    Log.info("GiftBasket","Boy: "+ name + " sent giftbasket with gift amount "
+        + basket.totalWorth.toString() + "to Girl: " + girlfriend.name);
+
+    girlfriend.receiveGiftBasket(basket);
+    updateHappiness();
   }
 
   @override
   void updateHappiness() {
     happiness = budget - totalGiftedAmount;
+    //print(happiness);
   }
 }
 
@@ -95,6 +106,15 @@ class GenerousBoy extends Boy {
       else
         break;
     }
+
+    totalGiftedAmount += basket.totalWorth;
+    totalGiftedValue += basket.totalValue;
+
+    Log.info("GiftBasket","Boy: "+ name + " sent giftbasket with gift amount "
+        + basket.totalWorth.toString() + "to Girl: " + girlfriend.name);
+
+    girlfriend.receiveGiftBasket(basket);
+    updateHappiness();
   }
 
   @override
@@ -131,6 +151,15 @@ class GeekBoy extends Boy {
         gifts.removeGift(lowestAmountLuxuryGift);
       }
     }
+
+    totalGiftedAmount += basket.totalWorth;
+    totalGiftedValue += basket.totalValue;
+
+    Log.info("GiftBasket","Boy: "+ name + " sent giftbasket with gift amount "
+        + basket.totalWorth.toString() + "to Girl: " + girlfriend.name);
+
+    girlfriend.receiveGiftBasket(basket);
+    updateHappiness();
   }
 
   @override
