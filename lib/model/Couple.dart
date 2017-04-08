@@ -93,4 +93,24 @@ class CoupleList {
       c.boy.sendGiftBasket(list);
     }
   }
+
+  /// Method to perform breakup of least happy k couples
+  void performBreakup(int k, List<Boy> boys) {
+    _coupleList.sort((a,b) => b.happiness.compareTo(a.happiness));
+
+    while(k-- > 0){
+      Boy exBoyfriend = _coupleList.last.girl.boyfriend;
+
+      _coupleList.last.girl.boyfriend = null;
+      _coupleList.last.boy.girlfriend = null;
+
+      _coupleList.last.girl.assignNewBoyfriend(exBoyfriend,boys);
+      _coupleList.insert(0,new _Couple(_coupleList.last.girl.boyfriend,_coupleList.last.girl));
+      _coupleList.removeLast();
+    }
+
+    print("Breakup and new assignment successful");
+
+  }
+
 }

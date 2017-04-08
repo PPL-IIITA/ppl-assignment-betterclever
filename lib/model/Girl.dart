@@ -99,6 +99,36 @@ abstract class Girl extends Person {
     }
   }
 
+  /// Method to Assign New Boyfriend to a Girl as per logic
+  void assignNewBoyfriend(Boy exBoyfriend, List<Boy> boyList) {
+
+    switch(criterion){
+      case "Richness": boyList.sort((a,b) => a.budget.compareTo(b.budget));
+      break;
+      case "Attractiveness": boyList.sort((a,b) => a.attractiveness.compareTo(b.attractiveness));
+      break;
+      case "Intelligence": boyList.sort((a,b) => a.intelligence.compareTo(b.intelligence));
+      break;
+    }
+
+    for (Boy b in boyList) {
+      if (b.girlfriend == null) {
+        if(b == exBoyfriend){
+          continue;
+        }
+        if (maintenanceBudget <= b.budget &&
+            attractiveness >= b.minAttractivenessRequired) {
+          b.girlfriend = this;
+          this.boyfriend = b;
+          Log.info("Commitment", b.name + ' committed to ' + name);
+          return;
+        }
+      }
+    }
+  }
+
+
+
 }
 
 class ChoosyGirl extends Girl {
