@@ -118,11 +118,34 @@ class GiftList {
     return gift;
   }
 
-  /// method to remove a gift
-  void removeGift(Gift lowestAmountLuxuryGift) {
-    _giftList.remove(lowestAmountLuxuryGift);
+  /// dart style getter to get lowest cost luxury gift
+  Gift get lowestAmountUtilityGift {
+    Gift gift;
+    for (Gift g in _giftList) {
+      if (g is UtilityGift) {
+        gift = g;
+        break;
+      }
+    }
+    return gift;
   }
 
+  /// dart style getter to get lowest cost Essential gift
+  Gift get lowestAmountEssentialGift {
+    Gift gift;
+    for (Gift g in _giftList) {
+      if (g is EssentialGift) {
+        gift = g;
+        break;
+      }
+    }
+    return gift;
+  }
+
+  /// method to remove a gift
+  void removeGift(Gift gift) {
+    _giftList.remove(gift);
+  }
 
 }
 

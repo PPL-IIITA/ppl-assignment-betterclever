@@ -6,6 +6,7 @@ library Couple;
 
 import 'package:ValentinesDay/model/Boy.dart';
 import 'package:ValentinesDay/model/Gift.dart';
+import 'package:ValentinesDay/model/GiftSelector.dart';
 import 'package:ValentinesDay/model/Girl.dart';
 
 /// Internal Class to Represent a couple
@@ -90,6 +91,15 @@ class CoupleList {
     for (_Couple c in _coupleList) {
       c.boy.sendGiftBasket(list);
     }
+    print("Gifting Complete");
+  }
+
+  /// Method to support Generic Gifting
+  void performGenericGifting(GiftSelector giftSelector) {
+    for (_Couple c in _coupleList) {
+      giftSelector.sendGiftBasket(c.boy);
+    }
+    print("Gifting Complete");
   }
 
   /// Method to perform breakup of least happy k couples
@@ -112,14 +122,13 @@ class CoupleList {
   }
 
   void performBreakup2(int minHappiness, List<Boy> boyList) {
-
-    _coupleList.sort((a,b) => b.happiness.compareTo(a.happiness));
+    _coupleList.sort((a, b) => b.happiness.compareTo(a.happiness));
 
     List<_Couple> newCouples = new List<_Couple>();
 
-    while(true){
+    while (true) {
       _Couple c = _coupleList.last;
-      if(c.happiness > minHappiness || _coupleList.length == 0){
+      if (c.happiness > minHappiness || _coupleList.length == 0) {
         break;
       }
       Boy exBoyfriend = c.boy;
