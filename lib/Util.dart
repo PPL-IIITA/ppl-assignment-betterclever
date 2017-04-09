@@ -230,6 +230,22 @@ class Utils{
     }
     return giftList;
   }
+
+  static List<String> getRandomBoyNames(int count) {
+    File BoysCsvFile = new File(_boysFileName);
+
+    List<String> boyNames = new List();
+    String csvString = BoysCsvFile.readAsStringSync();
+    List<List> rowsAsListOfValues = const CsvToListConverter().convert(csvString);
+
+    Math.Random random = new Math.Random();
+    for(int i=0;i<count;i++){
+      int k= random.nextInt(100);
+      List values = rowsAsListOfValues[k];
+      boyNames.add(values[0]);
+    }
+    return boyNames;
+  }
 }
 
 ///Logging Utility to log events to log file

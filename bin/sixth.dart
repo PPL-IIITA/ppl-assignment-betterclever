@@ -21,9 +21,6 @@ main(List<String> arg) {
   print("Couples Formed");
 
   coupleList.printCouples();
-  coupleList.performGifting(giftList);
-
-  print("Gifting Complete");
   print("Enter K");
   int k = int.parse(stdin.readLineSync());
 
@@ -34,9 +31,11 @@ main(List<String> arg) {
   int t = int.parse(stdin.readLineSync());
 
   while(t-- > 0){
+    coupleList.performGifting(giftList);
+    print("Gifting Complete");
     coupleList.performBreakup2(100,boyList);
-  }
 
-  print("New Couples");
-  coupleList.printCouples();
+    print("New Couples");
+    coupleList.printCouples();
+  }
 }
