@@ -52,7 +52,6 @@ class CoupleList {
 
   /// Method to print k most compatible Couples
   void printMostCompatible(int k) {
-
     print('\n' + k.toString() + ' most compatible couples\n');
 
     _coupleList.sort((a, b) => b.compatibility.compareTo(a.compatibility));
@@ -67,7 +66,6 @@ class CoupleList {
 
   /// Method to print k most happy Couples
   void printMostHappy(int k) {
-
     print('\n' + k.toString() + ' most happy couples\n');
 
     _coupleList.sort((a, b) => b.happiness.compareTo(a.happiness));
@@ -96,21 +94,45 @@ class CoupleList {
 
   /// Method to perform breakup of least happy k couples
   void performBreakup(int k, List<Boy> boys) {
-    _coupleList.sort((a,b) => b.happiness.compareTo(a.happiness));
+    _coupleList.sort((a, b) => b.happiness.compareTo(a.happiness));
 
-    while(k-- > 0){
+    while (k-- > 0) {
       Boy exBoyfriend = _coupleList.last.girl.boyfriend;
 
       _coupleList.last.girl.boyfriend = null;
       _coupleList.last.boy.girlfriend = null;
 
-      _coupleList.last.girl.assignNewBoyfriend(exBoyfriend,boys);
-      _coupleList.insert(0,new _Couple(_coupleList.last.girl.boyfriend,_coupleList.last.girl));
+      _coupleList.last.girl.assignNewBoyfriend(exBoyfriend, boys);
+      _coupleList.insert(0,
+          new _Couple(_coupleList.last.girl.boyfriend, _coupleList.last.girl));
       _coupleList.removeLast();
     }
 
     print("Breakup and new assignment successful");
+  }
 
+  void performBreakup2(int minHappiness, List<Boy> boyList) {
+
+    _coupleList.sort((a,b) => b.happiness.compareTo(a.happiness));
+
+    List<_Couple> newCouples = new List<_Couple>();
+
+    while(true){
+      _Couple c = _coupleList.last;
+      if(c.happiness > minHappiness || _coupleList.length == 0){
+        break;
+      }
+      Boy exBoyfriend = c.boy;
+      c.boy.girlfriend = null;
+      c.girl.boyfriend = null;
+      c.girl.assignNewBoyfriend(exBoyfriend, boyList);
+      if (c.girl.isCommitted) {
+        newCouples.add(new _Couple(c.girl.boyfriend, c.girl));
+      }
+      _coupleList.removeLast();
+    }
+
+    _coupleList.addAll(newCouples);
   }
 
 }
