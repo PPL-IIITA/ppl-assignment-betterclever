@@ -1,16 +1,23 @@
 /// This library contains Gift Class and related wrappers for List implementation
 library Gift;
+
+import 'package:ValentinesDay/TopKPicker.dart';
 /*
 * Created by betterclever
 * */
 
 /// Class to represent a Gift
-abstract class Gift {
+abstract class Gift implements TopSelectable {
 
   /// Cost of a Gift
   double price;
   /// Value of a Gift
   double value;
+
+  @override
+  num get primaryCriterionValue {
+    return price;
+  }
 
   Gift(this.price, this.value);
 

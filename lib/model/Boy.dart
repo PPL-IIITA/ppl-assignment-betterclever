@@ -1,6 +1,7 @@
 /// This module contains the Class to Represent a Boy and related objects
 library Boy;
 
+import 'package:ValentinesDay/TopKPicker.dart';
 import 'package:ValentinesDay/Util.dart';
 import 'package:ValentinesDay/model/Gift.dart';
 import 'package:ValentinesDay/model/Girl.dart';
@@ -10,7 +11,7 @@ import 'package:ValentinesDay/model/Person.dart';
 * */
 
 /// Class to represent a Boy
-abstract class Boy extends Person {
+abstract class Boy extends Person implements TopSelectable {
 
   /// Budget of Boy
   double budget;
@@ -29,6 +30,11 @@ abstract class Boy extends Person {
 
   /// Girlfriend of Boy if he is committed. null otherwise
   Girl girlfriend = null;
+
+  @override
+  num get primaryCriterionValue{
+    return budget;
+  }
 
   /// Getter for checking if boy is committed
   bool get isCommitted => girlfriend != null;

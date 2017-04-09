@@ -1,6 +1,7 @@
 /// This module contains the Class to Represent a Girl and related objects
 library Girl;
 
+import 'package:ValentinesDay/TopKPicker.dart';
 import 'package:ValentinesDay/Util.dart';
 import 'package:ValentinesDay/model/Boy.dart';
 import 'package:ValentinesDay/model/Gift.dart';
@@ -12,7 +13,7 @@ import 'dart:math' as Math;
 * */
 
 /// Class to represent a Girl
-abstract class Girl extends Person {
+abstract class Girl extends Person implements TopSelectable {
 
   /// Maintenance budget of Girl
   double maintenanceBudget;
@@ -22,6 +23,11 @@ abstract class Girl extends Person {
 
   /// criterion of selection: Attractiveness, Richness, Intelligence
   String criterion;
+
+  @override
+  num get primaryCriterionValue{
+    return attractiveness;
+  }
 
   /// List of total Received Gift Amount from the Boyfriends
   ///
