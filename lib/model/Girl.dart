@@ -44,7 +44,8 @@ abstract class Girl extends Person {
   bool get isCommitted => boyfriend != null;
 
   /// Constructor to initialize a Girl
-  Girl(String name, int attractiveness, int intelligence, this.maintenanceBudget,
+  Girl(String name, int attractiveness, int intelligence,
+      this.maintenanceBudget,
       this.criterion) : super(name, attractiveness, intelligence);
 
   /// Updates the happiness of the Girl according to Logic
@@ -76,24 +77,28 @@ abstract class Girl extends Person {
 
   /// Method to Assign Boyfriend to a Girl as per logic
   void assignBoyfriend(List<Boy> boyList) {
+    if (boyfriend == null) {
+      switch (criterion) {
+        case "Richness":
+          boyList.sort((a, b) => a.budget.compareTo(b.budget));
+          break;
+        case "Attractiveness":
+          boyList.sort((a, b) => a.attractiveness.compareTo(b.attractiveness));
+          break;
+        case "Intelligence":
+          boyList.sort((a, b) => a.intelligence.compareTo(b.intelligence));
+          break;
+      }
 
-    switch(criterion){
-      case "Richness": boyList.sort((a,b) => a.budget.compareTo(b.budget));
-      break;
-      case "Attractiveness": boyList.sort((a,b) => a.attractiveness.compareTo(b.attractiveness));
-      break;
-      case "Intelligence": boyList.sort((a,b) => a.intelligence.compareTo(b.intelligence));
-      break;
-    }
-
-    for (Boy b in boyList) {
-      if (b.girlfriend == null) {
-        if (maintenanceBudget <= b.budget &&
-            attractiveness >= b.minAttractivenessRequired) {
-          b.girlfriend = this;
-          this.boyfriend = b;
-          Log.info("Commitment", b.name + ' committed to ' + name);
-          return;
+      for (Boy b in boyList) {
+        if (b.girlfriend == null) {
+          if (maintenanceBudget <= b.budget &&
+              attractiveness >= b.minAttractivenessRequired) {
+            b.girlfriend = this;
+            this.boyfriend = b;
+            Log.info("Commitment", b.name + ' committed to ' + name);
+            return;
+          }
         }
       }
     }
@@ -101,19 +106,21 @@ abstract class Girl extends Person {
 
   /// Method to Assign New Boyfriend to a Girl as per logic
   void assignNewBoyfriend(Boy exBoyfriend, List<Boy> boyList) {
-
-    switch(criterion){
-      case "Richness": boyList.sort((a,b) => a.budget.compareTo(b.budget));
-      break;
-      case "Attractiveness": boyList.sort((a,b) => a.attractiveness.compareTo(b.attractiveness));
-      break;
-      case "Intelligence": boyList.sort((a,b) => a.intelligence.compareTo(b.intelligence));
-      break;
+    switch (criterion) {
+      case "Richness":
+        boyList.sort((a, b) => a.budget.compareTo(b.budget));
+        break;
+      case "Attractiveness":
+        boyList.sort((a, b) => a.attractiveness.compareTo(b.attractiveness));
+        break;
+      case "Intelligence":
+        boyList.sort((a, b) => a.intelligence.compareTo(b.intelligence));
+        break;
     }
 
     for (Boy b in boyList) {
       if (b.girlfriend == null) {
-        if(b == exBoyfriend){
+        if (b == exBoyfriend) {
           continue;
         }
         if (maintenanceBudget <= b.budget &&
@@ -128,13 +135,14 @@ abstract class Girl extends Person {
   }
 
 
-
 }
 
 class ChoosyGirl extends Girl {
 
-  ChoosyGirl(String name, int attractiveness, int intelligence, double maintenanceBudget,
-      String criterion) : super(name, attractiveness, intelligence, maintenanceBudget, criterion);
+  ChoosyGirl(String name, int attractiveness, int intelligence,
+      double maintenanceBudget,
+      String criterion)
+      : super(name, attractiveness, intelligence, maintenanceBudget, criterion);
 
 
   @override
@@ -151,8 +159,10 @@ class ChoosyGirl extends Girl {
 
 class NormalGirl extends Girl {
 
-  NormalGirl(String name, int attractiveness, int intelligence, double maintenanceBudget,
-      String criterion) : super(name, attractiveness, intelligence, maintenanceBudget, criterion);
+  NormalGirl(String name, int attractiveness, int intelligence,
+      double maintenanceBudget,
+      String criterion)
+      : super(name, attractiveness, intelligence, maintenanceBudget, criterion);
 
   @override
   void updateHappiness() {
@@ -171,8 +181,10 @@ class NormalGirl extends Girl {
 
 class DesperateGirl extends Girl {
 
-  DesperateGirl(String name, int attractiveness, int intelligence, double maintenanceBudget,
-      String criterion) : super(name, attractiveness, intelligence, maintenanceBudget, criterion);
+  DesperateGirl(String name, int attractiveness, int intelligence,
+      double maintenanceBudget,
+      String criterion)
+      : super(name, attractiveness, intelligence, maintenanceBudget, criterion);
 
   @override
   void updateHappiness() {

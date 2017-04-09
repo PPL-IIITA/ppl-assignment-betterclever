@@ -43,6 +43,22 @@ abstract class Boy extends Person {
 
   /// Sends a Gift Basket to the Girlfriend
   void sendGiftBasket(GiftList gifts);
+
+  void assignGirlfriend(List<Girl> girlList) {
+    if (girlfriend == null) {
+      for (Girl g in girlList) {
+        if (g.boyfriend == null) {
+          if (budget >= g.maintenanceBudget &&
+              g.attractiveness >= minAttractivenessRequired) {
+            this.girlfriend = g;
+            g.boyfriend = this;
+            Log.info("Commitment", name + ' committed to ' + g.name);
+            return;
+          }
+        }
+      }
+    }
+  }
 }
 
 /// Class to Represent a Miser Boy
@@ -70,7 +86,7 @@ class MiserBoy extends Boy {
     totalGiftedAmount += basket.totalWorth;
     totalGiftedValue += basket.totalValue;
 
-    Log.info("GiftBasket","Boy: "+ name + " sent giftbasket with gift amount "
+    Log.info("GiftBasket", "Boy: " + name + " sent giftbasket with gift amount "
         + basket.totalWorth.toString() + "to Girl: " + girlfriend.name);
 
     girlfriend.receiveGiftBasket(basket);
@@ -110,7 +126,7 @@ class GenerousBoy extends Boy {
     totalGiftedAmount += basket.totalWorth;
     totalGiftedValue += basket.totalValue;
 
-    Log.info("GiftBasket","Boy: "+ name + " sent giftbasket with gift amount "
+    Log.info("GiftBasket", "Boy: " + name + " sent giftbasket with gift amount "
         + basket.totalWorth.toString() + "to Girl: " + girlfriend.name);
 
     girlfriend.receiveGiftBasket(basket);
@@ -155,7 +171,7 @@ class GeekBoy extends Boy {
     totalGiftedAmount += basket.totalWorth;
     totalGiftedValue += basket.totalValue;
 
-    Log.info("GiftBasket","Boy: "+ name + " sent giftbasket with gift amount "
+    Log.info("GiftBasket", "Boy: " + name + " sent giftbasket with gift amount "
         + basket.totalWorth.toString() + "to Girl: " + girlfriend.name);
 
     girlfriend.receiveGiftBasket(basket);

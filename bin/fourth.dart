@@ -5,9 +5,8 @@ import 'package:ValentinesDay/model/Couple.dart';
 import 'package:ValentinesDay/model/Gift.dart';
 import 'package:ValentinesDay/model/Girl.dart';
 
-main(List<String> arg){
-
-  if(arg.length < 2){
+main(List<String> arg) {
+  if (arg.length < 2) {
     print("Enter 2 arguments: girlCount, boyCount");
     return;
   }
@@ -18,10 +17,10 @@ main(List<String> arg){
 
   CoupleList coupleList = new CoupleList();
 
-  for(Girl girl in girlList){
+  for (Girl girl in girlList) {
     girl.assignBoyfriend(boyList);
-    if(girl.isCommitted){
-      coupleList.addCouple(girl.boyfriend,girl);
+    if (girl.isCommitted) {
+      coupleList.addCouple(girl.boyfriend, girl);
     }
   }
 
@@ -39,9 +38,8 @@ main(List<String> arg){
 
   print("Performing Breakup");
 
-  coupleList.performBreakup(k,boyList);
-  
-  coupleList.printMostCompatible(k);
-  coupleList.printMostCompatible(k);
+  coupleList.performBreakup(k, boyList);
 
+  coupleList.printMostCompatible(k);
+  coupleList.printMostCompatible(k);
 }

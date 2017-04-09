@@ -20,3 +20,6 @@ doc/api/
 .idea/
 *.ipr
 *.iws
+/generated_csv/girls.csv
+/generated_csv/boys.csv
+/generated_csv/gifts.csv

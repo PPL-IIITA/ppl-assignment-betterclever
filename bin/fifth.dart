@@ -4,6 +4,7 @@ import 'package:ValentinesDay/model/Boy.dart';
 import 'package:ValentinesDay/model/Couple.dart';
 import 'package:ValentinesDay/model/Gift.dart';
 import 'package:ValentinesDay/model/Girl.dart';
+import 'package:ValentinesDay/Algorithm.dart' as Algorithm;
 
 main(List<String> arg) {
   if (arg.length < 2) {
@@ -15,19 +16,25 @@ main(List<String> arg) {
   List<Boy> boyList = Utils.getBoys(int.parse(arg[1]));
   GiftList giftList = new GiftList.fromList(Utils.getGifts());
 
-  CoupleList coupleList = new CoupleList();
+  print("Enter Algorithm Choice: 1/5");
+  int choice = int.parse(stdin.readLineSync());
 
-  for (Girl girl in girlList) {
-    girl.assignBoyfriend(boyList);
-    if (girl.isCommitted) {
-      coupleList.addCouple(girl.boyfriend, girl);
-    }
+  CoupleList coupleList;
+
+  switch (choice) {
+    case 1:
+      coupleList = Algorithm.makeCouples1(boyList, girlList);
+      break;
+    case 5:
+      coupleList = Algorithm.makeCouples2(boyList, girlList);
+      break;
+    default:
+      coupleList = Algorithm.makeCouples1(boyList, girlList);
   }
 
   print("Couples Formed");
 
   coupleList.printCouples();
-
   coupleList.performGifting(giftList);
 
   print("Gifting Complete");
