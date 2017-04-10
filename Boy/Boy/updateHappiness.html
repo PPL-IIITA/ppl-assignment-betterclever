@@ -55,7 +55,7 @@
         </ol>
         <div class="title-description">
           <h1 class="title">
-            <span class="kind">method</span> updateHappiness
+            <span class="kind">abstract method</span> updateHappiness
           </h1>
         </div>
         <ul class="subnav">
@@ -85,25 +85,28 @@
       <li class="section-title">
         <a href="Boy/Boy-class.html#instance-properties">Properties</a>
       </li>
-      <li><a href="Boy/Boy/attractiveness.html">attractiveness</a></li>
+      <li class="inherited"><a href="Person/Person/attractiveness.html">attractiveness</a></li>
       <li><a href="Boy/Boy/budget.html">budget</a></li>
       <li><a href="Boy/Boy/girlfriend.html">girlfriend</a></li>
       <li><a href="Boy/Boy/happiness.html">happiness</a></li>
       <li class="inherited"><a href="Boy/Boy/hashCode.html">hashCode</a></li>
-      <li><a href="Boy/Boy/intelligenceLevel.html">intelligenceLevel</a></li>
+      <li class="inherited"><a href="Person/Person/intelligence.html">intelligence</a></li>
+      <li><a href="Boy/Boy/isCommitted.html">isCommitted</a></li>
       <li><a href="Boy/Boy/minAttractivenessRequired.html">minAttractivenessRequired</a></li>
-      <li><a href="Boy/Boy/name.html">name</a></li>
+      <li class="inherited"><a href="Person/Person/name.html">name</a></li>
+      <li><a href="Boy/Boy/primaryCriterionValue.html">primaryCriterionValue</a></li>
       <li class="inherited"><a href="Boy/Boy/runtimeType.html">runtimeType</a></li>
       <li><a href="Boy/Boy/totalGiftedAmount.html">totalGiftedAmount</a></li>
-      <li><a href="Boy/Boy/type.html">type</a></li>
+      <li><a href="Boy/Boy/totalGiftedValue.html">totalGiftedValue</a></li>
     
       <li class="section-title inherited"><a href="Boy/Boy-class.html#operators">Operators</a></li>
       <li class="inherited"><a href="Boy/Boy/operator_equals.html">operator ==</a></li>
     
       <li class="section-title"><a href="Boy/Boy-class.html#instance-methods">Methods</a></li>
+      <li><a href="Boy/Boy/assignGirlfriend.html">assignGirlfriend</a></li>
       <li class="inherited"><a href="Boy/Boy/noSuchMethod.html">noSuchMethod</a></li>
       <li><a href="Boy/Boy/sendGiftBasket.html">sendGiftBasket</a></li>
-      <li><a href="Boy/Boy/toString.html">toString</a></li>
+      <li class="inherited"><a href="Boy/Boy/toString.html">toString</a></li>
       <li><a href="Boy/Boy/updateHappiness.html">updateHappiness</a></li>
     </ol>
 
@@ -120,22 +123,7 @@
     
     <section class="summary source-code" id="source">
       <h2><span>Source</span> </h2>
-      <pre class="prettyprint language-dart">void updateHappiness(){
-  &#47;&#47;&#47; The happiness of a Miser depends on total unspent money from Budget
-  if(type == &quot;Miser&quot;){
-    happiness = budget - totalGiftedAmount;
-  }
-  &#47;&#47;&#47; The happiness of Generous depends on happiness of Girlfriend
-  if(type == &quot;Generous&quot;){
-    if(Girl!=null)
-      happiness = girlfriend.happiness;
-  }
-  &#47;&#47;&#47; The happiness of Geek is given by intelligence of Girlfriend
-  if(type == &quot;Geek&quot;){
-    if(Girl!=null)
-      happiness = 10.00 * girlfriend.intelligenceLevel;
-  }
-}</pre>
+      <pre class="prettyprint language-dart">void updateHappiness();</pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -148,7 +136,7 @@
     <div class="container">
       <p class="text-center">
         <span class="no-break">
-          ValentinesDay 0.0.1
+          ValentinesDay 1.1.0
         </span>
         &bull;
         <span class="no-break">

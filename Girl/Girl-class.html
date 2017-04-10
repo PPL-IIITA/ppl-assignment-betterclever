@@ -53,7 +53,7 @@
         </ol>
         <div class="title-description">
           <h1 class="title">
-            <span class="kind">class</span> Girl
+            <span class="kind">abstract class</span> Girl
           </h1>
         </div>
         <ul class="subnav">
@@ -82,7 +82,10 @@
     
     
       <li class="section-title"><a href="Girl/Girl-library.html#classes">Classes</a></li>
+      <li><a href="Girl/ChoosyGirl-class.html">ChoosyGirl</a></li>
+      <li><a href="Girl/DesperateGirl-class.html">DesperateGirl</a></li>
       <li><a href="Girl/Girl-class.html">Girl</a></li>
+      <li><a href="Girl/NormalGirl-class.html">NormalGirl</a></li>
     
     </ol>
   </div>
@@ -90,9 +93,35 @@
   <div class="col-xs-12 col-sm-9 col-md-8 main-content">
 
     <section class="desc markdown">
-      <p>Class to Represent a Girl</p>
+      <p>Class to represent a Girl</p>
     </section>
     
+    <section>
+      <dl class="dl-horizontal">
+        <dt>Inheritance</dt>
+        <dd><ul class="gt-separated dark clazz-relationships">
+          <li>Object</li>
+          <li><a href="Person/Person-class.html">Person</a></li>
+          <li>Girl</li>
+        </ul></dd>
+
+        <dt>Implements</dt>
+        <dd>
+          <ul class="comma-separated clazz-relationships">
+            <li><a href="TopKPicker/TopSelectable-class.html">TopSelectable</a></li>
+          </ul>
+        </dd>
+
+
+        <dt>Implemented by</dt>
+        <dd><ul class="comma-separated clazz-relationships">
+          <li><a href="Girl/ChoosyGirl-class.html">ChoosyGirl</a></li>
+          <li><a href="Girl/DesperateGirl-class.html">DesperateGirl</a></li>
+          <li><a href="Girl/NormalGirl-class.html">NormalGirl</a></li>
+        </ul></dd>
+
+      </dl>
+    </section>
 
 
 
@@ -102,7 +131,7 @@
 
       <dl class="constructor-summary-list">
         <dt id="Girl" class="callable">
-          <span class="name"><a href="Girl/Girl/Girl.html">Girl</a></span><span class="signature">(<span class="parameter" id="-param-name"><span class="type-annotation">String</span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="-param-type"><span class="type-annotation">String</span> <span class="parameter-name">type</span>, </span> <span class="parameter" id="-param-attractiveness"><span class="type-annotation">int</span> <span class="parameter-name">attractiveness</span>, </span> <span class="parameter" id="-param-intelligenceLevel"><span class="type-annotation">int</span> <span class="parameter-name">intelligenceLevel</span>, </span> <span class="parameter" id="-param-maintenanceBudget"><span class="type-annotation">double</span> <span class="parameter-name">maintenanceBudget</span></span>)</span>
+          <span class="name"><a href="Girl/Girl/Girl.html">Girl</a></span><span class="signature">(<span class="parameter" id="-param-name"><span class="type-annotation">String</span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="-param-attractiveness"><span class="type-annotation">int</span> <span class="parameter-name">attractiveness</span>, </span> <span class="parameter" id="-param-intelligence"><span class="type-annotation">int</span> <span class="parameter-name">intelligence</span>, </span> <span class="parameter" id="-param-maintenanceBudget"><span class="type-annotation">double</span> <span class="parameter-name">maintenanceBudget</span>, </span> <span class="parameter" id="-param-criterion"><span class="type-annotation">String</span> <span class="parameter-name">criterion</span></span>)</span>
         </dt>
         <dd>
           <p>Constructor to initialize a Girl</p>
@@ -114,14 +143,14 @@
       <h2>Properties</h2>
 
       <dl class="properties">
-        <dt id="attractiveness" class="property">
-          <span class="name"><a href="Girl/Girl/attractiveness.html">attractiveness</a></span>
+        <dt id="attractiveness" class="property inherited">
+          <span class="name"><a href="Person/Person/attractiveness.html">attractiveness</a></span>
           <span class="signature">&#8594; int</span>
         </dt>
-        <dd>
-          <p>Attractiveness on scale of 1-10</p>
+        <dd class="inherited">
+          <p>Attractiveness of Person on scale of 1-10</p>
           <div class="features">
-    read / write
+    read / write, inherited
   </div>
 </dd>
         <dt id="boyfriend" class="property">
@@ -129,7 +158,17 @@
           <span class="signature">&#8594; <a href="Boy/Boy-class.html">Boy</a></span>
         </dt>
         <dd>
-          <p>Boyfriend of Girl. <code>null</code> initially</p>
+          <p>Boyfriend of Girl if she is committed. null otherwise</p>
+          <div class="features">
+    read / write
+  </div>
+</dd>
+        <dt id="criterion" class="property">
+          <span class="name"><a href="Girl/Girl/criterion.html">criterion</a></span>
+          <span class="signature">&#8594; String</span>
+        </dt>
+        <dd>
+          <p>criterion of selection: Attractiveness, Richness, Intelligence</p>
           <div class="features">
     read / write
   </div>
@@ -139,7 +178,7 @@
           <span class="signature">&#8594; double</span>
         </dt>
         <dd>
-          <p>Happiness amount. Initially Zero</p>
+          <p>Amount of Happiness. Zero Initially</p>
           <div class="features">
     read / write
   </div>
@@ -154,14 +193,24 @@
     read-only, inherited
   </div>
 </dd>
-        <dt id="intelligenceLevel" class="property">
-          <span class="name"><a href="Girl/Girl/intelligenceLevel.html">intelligenceLevel</a></span>
+        <dt id="intelligence" class="property inherited">
+          <span class="name"><a href="Person/Person/intelligence.html">intelligence</a></span>
           <span class="signature">&#8594; int</span>
         </dt>
-        <dd>
-          <p>intelligence level on scale of 1-10</p>
+        <dd class="inherited">
+          <p>Intelligence of Person on scale of 1-10</p>
           <div class="features">
-    read / write
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="isCommitted" class="property">
+          <span class="name"><a href="Girl/Girl/isCommitted.html">isCommitted</a></span>
+          <span class="signature">&#8594; bool</span>
+        </dt>
+        <dd>
+          <p>Getter for checking if Girl is committed</p>
+          <div class="features">
+    read-only
   </div>
 </dd>
         <dt id="maintenanceBudget" class="property">
@@ -174,14 +223,24 @@
     read / write
   </div>
 </dd>
-        <dt id="name" class="property">
-          <span class="name"><a href="Girl/Girl/name.html">name</a></span>
+        <dt id="name" class="property inherited">
+          <span class="name"><a href="Person/Person/name.html">name</a></span>
           <span class="signature">&#8594; String</span>
         </dt>
-        <dd>
-          <p>Name of Girl</p>
+        <dd class="inherited">
+          <p>Name of Person</p>
           <div class="features">
-    read / write
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="primaryCriterionValue" class="property">
+          <span class="name"><a href="Girl/Girl/primaryCriterionValue.html">primaryCriterionValue</a></span>
+          <span class="signature">&#8594; num</span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="features">
+    read-only
   </div>
 </dd>
         <dt id="runtimeType" class="property inherited">
@@ -210,16 +269,6 @@
         </dt>
         <dd>
           <p>List of total Received Gift Value from the Boyfriends</p>
-          <div class="features">
-    read / write
-  </div>
-</dd>
-        <dt id="type" class="property">
-          <span class="name"><a href="Girl/Girl/type.html">type</a></span>
-          <span class="signature">&#8594; String</span>
-        </dt>
-        <dd>
-          <p>Type of Girl. Allowed values: "Choosy, Normal, Desperate"</p>
           <div class="features">
     read / write
   </div>
@@ -253,13 +302,13 @@
         <dd>
           <p>Method to Assign Boyfriend to a Girl as per logic</p>
         </dd>
-        <dt id="isCommitted" class="callable">
-          <span class="name"><a href="Girl/Girl/isCommitted.html">isCommitted</a></span><span class="signature">(<wbr>)
-            <span class="returntype parameter">&#8594; bool</span>
+        <dt id="assignNewBoyfriend" class="callable">
+          <span class="name"><a href="Girl/Girl/assignNewBoyfriend.html">assignNewBoyfriend</a></span><span class="signature">(<wbr><span class="parameter" id="assignNewBoyfriend-param-exBoyfriend"><span class="type-annotation"><a href="Boy/Boy-class.html">Boy</a></span> <span class="parameter-name">exBoyfriend</span>, </span> <span class="parameter" id="assignNewBoyfriend-param-boyList"><span class="type-annotation">List&lt;<a href="Boy/Boy-class.html">Boy</a>&gt;</span> <span class="parameter-name">boyList</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
           </span>
         </dt>
         <dd>
-          <p>returns the commitment status of a Girl</p>
+          <p>Method to Assign New Boyfriend to a Girl as per logic</p>
         </dd>
         <dt id="noSuchMethod" class="callable inherited">
           <span class="name"><a href="Girl/Girl/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation">Invocation</span> <span class="parameter-name">invocation</span></span>)
@@ -276,15 +325,16 @@
           </span>
         </dt>
         <dd>
-          <p>Method to Receive a GiftBasket from Boyfriend</p>
+          <p>Receives a gift basket from Boyfriend</p>
         </dd>
-        <dt id="toString" class="callable">
+        <dt id="toString" class="callable inherited">
           <span class="name"><a href="Girl/Girl/toString.html">toString</a></span><span class="signature">(<wbr>)
             <span class="returntype parameter">&#8594; String</span>
           </span>
         </dt>
-        <dd>
+        <dd class="inherited">
           <p>Returns a string representation of this object.</p>
+          <div class="features">inherited</div>
         </dd>
         <dt id="updateHappiness" class="callable">
           <span class="name"><a href="Girl/Girl/updateHappiness.html">updateHappiness</a></span><span class="signature">(<wbr>)
@@ -292,7 +342,7 @@
           </span>
         </dt>
         <dd>
-          <p>Method to update happiness of a Girl according to logic</p>
+          <p>Updates the happiness of the Girl according to Logic</p>
         </dd>
       </dl>
     </section>
@@ -311,27 +361,29 @@
       <li class="section-title">
         <a href="Girl/Girl-class.html#instance-properties">Properties</a>
       </li>
-      <li><a href="Girl/Girl/attractiveness.html">attractiveness</a></li>
+      <li class="inherited"><a href="Person/Person/attractiveness.html">attractiveness</a></li>
       <li><a href="Girl/Girl/boyfriend.html">boyfriend</a></li>
+      <li><a href="Girl/Girl/criterion.html">criterion</a></li>
       <li><a href="Girl/Girl/happiness.html">happiness</a></li>
       <li class="inherited"><a href="Girl/Girl/hashCode.html">hashCode</a></li>
-      <li><a href="Girl/Girl/intelligenceLevel.html">intelligenceLevel</a></li>
+      <li class="inherited"><a href="Person/Person/intelligence.html">intelligence</a></li>
+      <li><a href="Girl/Girl/isCommitted.html">isCommitted</a></li>
       <li><a href="Girl/Girl/maintenanceBudget.html">maintenanceBudget</a></li>
-      <li><a href="Girl/Girl/name.html">name</a></li>
+      <li class="inherited"><a href="Person/Person/name.html">name</a></li>
+      <li><a href="Girl/Girl/primaryCriterionValue.html">primaryCriterionValue</a></li>
       <li class="inherited"><a href="Girl/Girl/runtimeType.html">runtimeType</a></li>
       <li><a href="Girl/Girl/totalReceivedGiftAmount.html">totalReceivedGiftAmount</a></li>
       <li><a href="Girl/Girl/totalReceivedGiftValue.html">totalReceivedGiftValue</a></li>
-      <li><a href="Girl/Girl/type.html">type</a></li>
     
       <li class="section-title inherited"><a href="Girl/Girl-class.html#operators">Operators</a></li>
       <li class="inherited"><a href="Girl/Girl/operator_equals.html">operator ==</a></li>
     
       <li class="section-title"><a href="Girl/Girl-class.html#instance-methods">Methods</a></li>
       <li><a href="Girl/Girl/assignBoyfriend.html">assignBoyfriend</a></li>
-      <li><a href="Girl/Girl/isCommitted.html">isCommitted</a></li>
+      <li><a href="Girl/Girl/assignNewBoyfriend.html">assignNewBoyfriend</a></li>
       <li class="inherited"><a href="Girl/Girl/noSuchMethod.html">noSuchMethod</a></li>
       <li><a href="Girl/Girl/receiveGiftBasket.html">receiveGiftBasket</a></li>
-      <li><a href="Girl/Girl/toString.html">toString</a></li>
+      <li class="inherited"><a href="Girl/Girl/toString.html">toString</a></li>
       <li><a href="Girl/Girl/updateHappiness.html">updateHappiness</a></li>
     </ol>
   </div><!--/.sidebar-offcanvas-->
@@ -344,7 +396,7 @@
     <div class="container">
       <p class="text-center">
         <span class="no-break">
-          ValentinesDay 0.0.1
+          ValentinesDay 1.1.0
         </span>
         &bull;
         <span class="no-break">

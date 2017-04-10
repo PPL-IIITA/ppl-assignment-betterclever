@@ -121,23 +121,23 @@
 
     String name = _randomString(10);
     String type;
+    String criterion;
     int attractiveness = 1+rand.nextInt(10);
     int intelligenceLevel = 1+rand.nextInt(10);
     double maintenanceBudget = 100 + rand.nextDouble()*9000;
 
     switch (rand.nextInt(3)) {
-      case 0:
-        type = &quot;Choosy&quot;;
-        break;
-      case 1:
-        type = &quot;Normal&quot;;
-        break;
-      case 2:
-        type = &quot;Desperate&quot;;
-        break;
+      case 0: type = &quot;Choosy&quot;; break;
+      case 1: type = &quot;Normal&quot;; break;
+      case 2: type = &quot;Desperate&quot;; break;
+    }
+    switch (rand.nextInt(3)) {
+      case 0: criterion = &quot;Richness&quot;; break;
+      case 1: criterion = &quot;Attractiveness&quot;; break;
+      case 2: criterion = &quot;Intelligence&quot;; break;
     }
 
-    list.add([name,type,attractiveness,intelligenceLevel,maintenanceBudget]);
+    list.add([name,type,attractiveness,intelligenceLevel,maintenanceBudget,criterion]);
   }
 
   String csv = const ListToCsvConverter().convert(list);
@@ -157,7 +157,7 @@
     <div class="container">
       <p class="text-center">
         <span class="no-break">
-          ValentinesDay 0.0.1
+          ValentinesDay 1.1.0
         </span>
         &bull;
         <span class="no-break">

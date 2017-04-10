@@ -85,27 +85,29 @@
       <li class="section-title">
         <a href="Girl/Girl-class.html#instance-properties">Properties</a>
       </li>
-      <li><a href="Girl/Girl/attractiveness.html">attractiveness</a></li>
+      <li class="inherited"><a href="Person/Person/attractiveness.html">attractiveness</a></li>
       <li><a href="Girl/Girl/boyfriend.html">boyfriend</a></li>
+      <li><a href="Girl/Girl/criterion.html">criterion</a></li>
       <li><a href="Girl/Girl/happiness.html">happiness</a></li>
       <li class="inherited"><a href="Girl/Girl/hashCode.html">hashCode</a></li>
-      <li><a href="Girl/Girl/intelligenceLevel.html">intelligenceLevel</a></li>
+      <li class="inherited"><a href="Person/Person/intelligence.html">intelligence</a></li>
+      <li><a href="Girl/Girl/isCommitted.html">isCommitted</a></li>
       <li><a href="Girl/Girl/maintenanceBudget.html">maintenanceBudget</a></li>
-      <li><a href="Girl/Girl/name.html">name</a></li>
+      <li class="inherited"><a href="Person/Person/name.html">name</a></li>
+      <li><a href="Girl/Girl/primaryCriterionValue.html">primaryCriterionValue</a></li>
       <li class="inherited"><a href="Girl/Girl/runtimeType.html">runtimeType</a></li>
       <li><a href="Girl/Girl/totalReceivedGiftAmount.html">totalReceivedGiftAmount</a></li>
       <li><a href="Girl/Girl/totalReceivedGiftValue.html">totalReceivedGiftValue</a></li>
-      <li><a href="Girl/Girl/type.html">type</a></li>
     
       <li class="section-title inherited"><a href="Girl/Girl-class.html#operators">Operators</a></li>
       <li class="inherited"><a href="Girl/Girl/operator_equals.html">operator ==</a></li>
     
       <li class="section-title"><a href="Girl/Girl-class.html#instance-methods">Methods</a></li>
       <li><a href="Girl/Girl/assignBoyfriend.html">assignBoyfriend</a></li>
-      <li><a href="Girl/Girl/isCommitted.html">isCommitted</a></li>
+      <li><a href="Girl/Girl/assignNewBoyfriend.html">assignNewBoyfriend</a></li>
       <li class="inherited"><a href="Girl/Girl/noSuchMethod.html">noSuchMethod</a></li>
       <li><a href="Girl/Girl/receiveGiftBasket.html">receiveGiftBasket</a></li>
-      <li><a href="Girl/Girl/toString.html">toString</a></li>
+      <li class="inherited"><a href="Girl/Girl/toString.html">toString</a></li>
       <li><a href="Girl/Girl/updateHappiness.html">updateHappiness</a></li>
     </ol>
 
@@ -117,7 +119,7 @@
       <span class="name ">receiveGiftBasket</span>(<wbr><span class="parameter" id="receiveGiftBasket-param-basket"><span class="type-annotation"><a href="Gift/GiftBasket-class.html">GiftBasket</a></span> <span class="parameter-name">basket</span></span>)
     </section>
     <section class="desc markdown">
-      <p>Method to Receive a GiftBasket from Boyfriend</p>
+      <p>Receives a gift basket from Boyfriend</p>
     </section>
     
     <section class="summary source-code" id="source">
@@ -125,19 +127,19 @@
       <pre class="prettyprint language-dart">void receiveGiftBasket(GiftBasket basket) {
   for (Gift g in basket.giftList) {
     Log.info(&quot;Gift Receipt &quot;, &quot;Gift with price &quot; + g.price.toString() +
-        &quot; and type &quot; + g.type
+        &quot; and type &quot; + g.runtimeType.toString()
         + &quot; receieved by Girl &quot; + name);
 
-    switch (g.type) {
-      case &quot;Essential&quot;:
+    switch (g.runtimeType) {
+      case EssentialGift:
         totalReceivedGiftAmount[0] += g.price;
         totalReceivedGiftValue[0] += g.value;
         break;
-      case &quot;Luxury&quot;:
+      case UtilityGift:
         totalReceivedGiftAmount[1] += g.price;
         totalReceivedGiftValue[1] += g.value;
         break;
-      case &quot;Utility&quot;:
+      case LuxuryGift:
         totalReceivedGiftAmount[2] += g.price;
         totalReceivedGiftValue[2] += g.value;
     }
@@ -156,7 +158,7 @@
     <div class="container">
       <p class="text-center">
         <span class="no-break">
-          ValentinesDay 0.0.1
+          ValentinesDay 1.1.0
         </span>
         &bull;
         <span class="no-break">

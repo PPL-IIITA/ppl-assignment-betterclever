@@ -82,6 +82,7 @@
       <li><a href="Util/Utils/getBoys.html">getBoys</a></li>
       <li><a href="Util/Utils/getGifts.html">getGifts</a></li>
       <li><a href="Util/Utils/getGirls.html">getGirls</a></li>
+      <li><a href="Util/Utils/getRandomBoyNames.html">getRandomBoyNames</a></li>
     
       <li class="section-title"><a href="Util/Utils-class.html#constructors">Constructors</a></li>
       <li><a href="Util/Utils/Utils.html">Utils</a></li>
@@ -125,7 +126,16 @@
 
   for(int i=0;i&lt;count;i++){
     List&lt;dynamic&gt; values = rowsAsListOfValues[i];
-    Girl girl = new Girl(values[0],values[1],values[2],values[3],values[4]);
+
+    Girl girl;
+    switch(values[1]){
+      case &quot;Choosy&quot;: girl = new ChoosyGirl(values[0],values[2],values[3],values[4],values[5]);
+      break;
+      case &quot;Normal&quot;: girl = new NormalGirl(values[0],values[2],values[3],values[4],values[5]);
+      break;
+      case &quot;Desperate&quot;: girl = new DesperateGirl(values[0],values[2],values[3],values[4],values[5]);
+      break;
+    }
     girlList.add(girl);
   }
 
@@ -143,7 +153,7 @@
     <div class="container">
       <p class="text-center">
         <span class="no-break">
-          ValentinesDay 0.0.1
+          ValentinesDay 1.1.0
         </span>
         &bull;
         <span class="no-break">

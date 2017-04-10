@@ -82,9 +82,12 @@
     
     
       <li class="section-title"><a href="Gift/Gift-library.html#classes">Classes</a></li>
+      <li><a href="Gift/EssentialGift-class.html">EssentialGift</a></li>
       <li><a href="Gift/Gift-class.html">Gift</a></li>
       <li><a href="Gift/GiftBasket-class.html">GiftBasket</a></li>
       <li><a href="Gift/GiftList-class.html">GiftList</a></li>
+      <li><a href="Gift/LuxuryGift-class.html">LuxuryGift</a></li>
+      <li><a href="Gift/UtilityGift-class.html">UtilityGift</a></li>
     
     </ol>
   </div>
@@ -126,6 +129,16 @@
     read-only, inherited
   </div>
 </dd>
+        <dt id="lowestAmountEssentialGift" class="property">
+          <span class="name"><a href="Gift/GiftList/lowestAmountEssentialGift.html">lowestAmountEssentialGift</a></span>
+          <span class="signature">&#8594; <a href="Gift/Gift-class.html">Gift</a></span>
+        </dt>
+        <dd>
+          <p>dart style getter to get lowest cost Essential gift</p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
         <dt id="lowestAmountGift" class="property">
           <span class="name"><a href="Gift/GiftList/lowestAmountGift.html">lowestAmountGift</a></span>
           <span class="signature">&#8594; <a href="Gift/Gift-class.html">Gift</a></span>
@@ -138,6 +151,16 @@
 </dd>
         <dt id="lowestAmountLuxuryGift" class="property">
           <span class="name"><a href="Gift/GiftList/lowestAmountLuxuryGift.html">lowestAmountLuxuryGift</a></span>
+          <span class="signature">&#8594; <a href="Gift/Gift-class.html">Gift</a></span>
+        </dt>
+        <dd>
+          <p>dart style getter to get lowest cost luxury gift</p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="lowestAmountUtilityGift" class="property">
+          <span class="name"><a href="Gift/GiftList/lowestAmountUtilityGift.html">lowestAmountUtilityGift</a></span>
           <span class="signature">&#8594; <a href="Gift/Gift-class.html">Gift</a></span>
         </dt>
         <dd>
@@ -177,6 +200,14 @@
     <section class="summary offset-anchor" id="instance-methods">
       <h2>Methods</h2>
       <dl class="callables">
+        <dt id="getRandomGift" class="callable">
+          <span class="name"><a href="Gift/GiftList/getRandomGift.html">getRandomGift</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="Gift/Gift-class.html">Gift</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Method to get a random Gift using Random Utility made in Question 10</p>
+        </dd>
         <dt id="noSuchMethod" class="callable inherited">
           <span class="name"><a href="Gift/GiftList/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation">Invocation</span> <span class="parameter-name">invocation</span></span>)
             <span class="returntype parameter">&#8594; dynamic</span>
@@ -187,7 +218,7 @@
           <div class="features">inherited</div>
         </dd>
         <dt id="removeGift" class="callable">
-          <span class="name"><a href="Gift/GiftList/removeGift.html">removeGift</a></span><span class="signature">(<wbr><span class="parameter" id="removeGift-param-lowestAmountLuxuryGift"><span class="type-annotation"><a href="Gift/Gift-class.html">Gift</a></span> <span class="parameter-name">lowestAmountLuxuryGift</span></span>)
+          <span class="name"><a href="Gift/GiftList/removeGift.html">removeGift</a></span><span class="signature">(<wbr><span class="parameter" id="removeGift-param-gift"><span class="type-annotation"><a href="Gift/Gift-class.html">Gift</a></span> <span class="parameter-name">gift</span></span>)
             <span class="returntype parameter">&#8594; void</span>
           </span>
         </dt>
@@ -229,14 +260,17 @@
         <a href="Gift/GiftList-class.html#instance-properties">Properties</a>
       </li>
       <li class="inherited"><a href="Gift/GiftList/hashCode.html">hashCode</a></li>
+      <li><a href="Gift/GiftList/lowestAmountEssentialGift.html">lowestAmountEssentialGift</a></li>
       <li><a href="Gift/GiftList/lowestAmountGift.html">lowestAmountGift</a></li>
       <li><a href="Gift/GiftList/lowestAmountLuxuryGift.html">lowestAmountLuxuryGift</a></li>
+      <li><a href="Gift/GiftList/lowestAmountUtilityGift.html">lowestAmountUtilityGift</a></li>
       <li class="inherited"><a href="Gift/GiftList/runtimeType.html">runtimeType</a></li>
     
       <li class="section-title inherited"><a href="Gift/GiftList-class.html#operators">Operators</a></li>
       <li class="inherited"><a href="Gift/GiftList/operator_equals.html">operator ==</a></li>
     
       <li class="section-title"><a href="Gift/GiftList-class.html#instance-methods">Methods</a></li>
+      <li><a href="Gift/GiftList/getRandomGift.html">getRandomGift</a></li>
       <li class="inherited"><a href="Gift/GiftList/noSuchMethod.html">noSuchMethod</a></li>
       <li><a href="Gift/GiftList/removeGift.html">removeGift</a></li>
       <li><a href="Gift/GiftList/removeLowest.html">removeLowest</a></li>
@@ -252,7 +286,7 @@
     <div class="container">
       <p class="text-center">
         <span class="no-break">
-          ValentinesDay 0.0.1
+          ValentinesDay 1.1.0
         </span>
         &bull;
         <span class="no-break">

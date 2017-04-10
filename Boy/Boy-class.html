@@ -53,7 +53,7 @@
         </ol>
         <div class="title-description">
           <h1 class="title">
-            <span class="kind">class</span> Boy
+            <span class="kind">abstract class</span> Boy
           </h1>
         </div>
         <ul class="subnav">
@@ -83,6 +83,9 @@
     
       <li class="section-title"><a href="Boy/Boy-library.html#classes">Classes</a></li>
       <li><a href="Boy/Boy-class.html">Boy</a></li>
+      <li><a href="Boy/GeekBoy-class.html">GeekBoy</a></li>
+      <li><a href="Boy/GenerousBoy-class.html">GenerousBoy</a></li>
+      <li><a href="Boy/MiserBoy-class.html">MiserBoy</a></li>
     
     </ol>
   </div>
@@ -93,6 +96,32 @@
       <p>Class to represent a Boy</p>
     </section>
     
+    <section>
+      <dl class="dl-horizontal">
+        <dt>Inheritance</dt>
+        <dd><ul class="gt-separated dark clazz-relationships">
+          <li>Object</li>
+          <li><a href="Person/Person-class.html">Person</a></li>
+          <li>Boy</li>
+        </ul></dd>
+
+        <dt>Implements</dt>
+        <dd>
+          <ul class="comma-separated clazz-relationships">
+            <li><a href="TopKPicker/TopSelectable-class.html">TopSelectable</a></li>
+          </ul>
+        </dd>
+
+
+        <dt>Implemented by</dt>
+        <dd><ul class="comma-separated clazz-relationships">
+          <li><a href="Boy/GeekBoy-class.html">GeekBoy</a></li>
+          <li><a href="Boy/GenerousBoy-class.html">GenerousBoy</a></li>
+          <li><a href="Boy/MiserBoy-class.html">MiserBoy</a></li>
+        </ul></dd>
+
+      </dl>
+    </section>
 
 
 
@@ -102,10 +131,10 @@
 
       <dl class="constructor-summary-list">
         <dt id="Boy" class="callable">
-          <span class="name"><a href="Boy/Boy/Boy.html">Boy</a></span><span class="signature">(<span class="parameter" id="-param-name"><span class="type-annotation">String</span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="-param-type"><span class="type-annotation">String</span> <span class="parameter-name">type</span>, </span> <span class="parameter" id="-param-attractiveness"><span class="type-annotation">int</span> <span class="parameter-name">attractiveness</span>, </span> <span class="parameter" id="-param-minAttractivenessRequired"><span class="type-annotation">int</span> <span class="parameter-name">minAttractivenessRequired</span>, </span> <span class="parameter" id="-param-intelligenceLevel"><span class="type-annotation">int</span> <span class="parameter-name">intelligenceLevel</span>, </span> <span class="parameter" id="-param-budget"><span class="type-annotation">double</span> <span class="parameter-name">budget</span></span>)</span>
+          <span class="name"><a href="Boy/Boy/Boy.html">Boy</a></span><span class="signature">(<span class="parameter" id="-param-name"><span class="type-annotation">String</span> <span class="parameter-name">name</span>, </span> <span class="parameter" id="-param-attractiveness"><span class="type-annotation">int</span> <span class="parameter-name">attractiveness</span>, </span> <span class="parameter" id="-param-intelligence"><span class="type-annotation">int</span> <span class="parameter-name">intelligence</span>, </span> <span class="parameter" id="-param-minAttractivenessRequired"><span class="type-annotation">int</span> <span class="parameter-name">minAttractivenessRequired</span>, </span> <span class="parameter" id="-param-budget"><span class="type-annotation">double</span> <span class="parameter-name">budget</span></span>)</span>
         </dt>
         <dd>
-          <p>Constructor to initialize a Boy</p>
+          <p>Constructor to initialize a boy</p>
         </dd>
       </dl>
     </section>
@@ -114,14 +143,14 @@
       <h2>Properties</h2>
 
       <dl class="properties">
-        <dt id="attractiveness" class="property">
-          <span class="name"><a href="Boy/Boy/attractiveness.html">attractiveness</a></span>
+        <dt id="attractiveness" class="property inherited">
+          <span class="name"><a href="Person/Person/attractiveness.html">attractiveness</a></span>
           <span class="signature">&#8594; int</span>
         </dt>
-        <dd>
-          <p>Attractiveness on scale of 1-10</p>
+        <dd class="inherited">
+          <p>Attractiveness of Person on scale of 1-10</p>
           <div class="features">
-    read / write
+    read / write, inherited
   </div>
 </dd>
         <dt id="budget" class="property">
@@ -139,7 +168,7 @@
           <span class="signature">&#8594; <a href="Girl/Girl-class.html">Girl</a></span>
         </dt>
         <dd>
-          <p></p>
+          <p>Girlfriend of Boy if he is committed. null otherwise</p>
           <div class="features">
     read / write
   </div>
@@ -149,7 +178,7 @@
           <span class="signature">&#8594; double</span>
         </dt>
         <dd>
-          <p>Happiness amount. Initially Zero</p>
+          <p>Amount of Happiness. Zero Initially</p>
           <div class="features">
     read / write
   </div>
@@ -164,14 +193,24 @@
     read-only, inherited
   </div>
 </dd>
-        <dt id="intelligenceLevel" class="property">
-          <span class="name"><a href="Boy/Boy/intelligenceLevel.html">intelligenceLevel</a></span>
+        <dt id="intelligence" class="property inherited">
+          <span class="name"><a href="Person/Person/intelligence.html">intelligence</a></span>
           <span class="signature">&#8594; int</span>
         </dt>
-        <dd>
-          <p>intelligence level on scale of 1-10</p>
+        <dd class="inherited">
+          <p>Intelligence of Person on scale of 1-10</p>
           <div class="features">
-    read / write
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="isCommitted" class="property">
+          <span class="name"><a href="Boy/Boy/isCommitted.html">isCommitted</a></span>
+          <span class="signature">&#8594; bool</span>
+        </dt>
+        <dd>
+          <p>Getter for checking if boy is committed</p>
+          <div class="features">
+    read-only
   </div>
 </dd>
         <dt id="minAttractivenessRequired" class="property">
@@ -184,14 +223,24 @@
     read / write
   </div>
 </dd>
-        <dt id="name" class="property">
-          <span class="name"><a href="Boy/Boy/name.html">name</a></span>
+        <dt id="name" class="property inherited">
+          <span class="name"><a href="Person/Person/name.html">name</a></span>
           <span class="signature">&#8594; String</span>
         </dt>
-        <dd>
-          <p>Name of Boy</p>
+        <dd class="inherited">
+          <p>Name of Person</p>
           <div class="features">
-    read / write
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="primaryCriterionValue" class="property">
+          <span class="name"><a href="Boy/Boy/primaryCriterionValue.html">primaryCriterionValue</a></span>
+          <span class="signature">&#8594; num</span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="features">
+    read-only
   </div>
 </dd>
         <dt id="runtimeType" class="property inherited">
@@ -209,17 +258,17 @@
           <span class="signature">&#8594; double</span>
         </dt>
         <dd>
-          <p>Total value of gifts gifted to Girlfriend</p>
+          <p>Total Amount of gifts gifted to Girlfriend</p>
           <div class="features">
     read / write
   </div>
 </dd>
-        <dt id="type" class="property">
-          <span class="name"><a href="Boy/Boy/type.html">type</a></span>
-          <span class="signature">&#8594; String</span>
+        <dt id="totalGiftedValue" class="property">
+          <span class="name"><a href="Boy/Boy/totalGiftedValue.html">totalGiftedValue</a></span>
+          <span class="signature">&#8594; double</span>
         </dt>
         <dd>
-          <p>Type of Boy: Miser, Generous, Geek</p>
+          <p>Total value of gifts gifted to Girlfriend</p>
           <div class="features">
     read / write
   </div>
@@ -245,6 +294,14 @@
     <section class="summary offset-anchor" id="instance-methods">
       <h2>Methods</h2>
       <dl class="callables">
+        <dt id="assignGirlfriend" class="callable">
+          <span class="name"><a href="Boy/Boy/assignGirlfriend.html">assignGirlfriend</a></span><span class="signature">(<wbr><span class="parameter" id="assignGirlfriend-param-girlList"><span class="type-annotation">List&lt;<a href="Girl/Girl-class.html">Girl</a>&gt;</span> <span class="parameter-name">girlList</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Method to assign Girlfriend to a Boy as per logic</p>
+        </dd>
         <dt id="noSuchMethod" class="callable inherited">
           <span class="name"><a href="Boy/Boy/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation">Invocation</span> <span class="parameter-name">invocation</span></span>)
             <span class="returntype parameter">&#8594; dynamic</span>
@@ -262,13 +319,14 @@
         <dd>
           <p>Sends a Gift Basket to the Girlfriend</p>
         </dd>
-        <dt id="toString" class="callable">
+        <dt id="toString" class="callable inherited">
           <span class="name"><a href="Boy/Boy/toString.html">toString</a></span><span class="signature">(<wbr>)
             <span class="returntype parameter">&#8594; String</span>
           </span>
         </dt>
-        <dd>
+        <dd class="inherited">
           <p>Returns a string representation of this object.</p>
+          <div class="features">inherited</div>
         </dd>
         <dt id="updateHappiness" class="callable">
           <span class="name"><a href="Boy/Boy/updateHappiness.html">updateHappiness</a></span><span class="signature">(<wbr>)
@@ -295,25 +353,28 @@
       <li class="section-title">
         <a href="Boy/Boy-class.html#instance-properties">Properties</a>
       </li>
-      <li><a href="Boy/Boy/attractiveness.html">attractiveness</a></li>
+      <li class="inherited"><a href="Person/Person/attractiveness.html">attractiveness</a></li>
       <li><a href="Boy/Boy/budget.html">budget</a></li>
       <li><a href="Boy/Boy/girlfriend.html">girlfriend</a></li>
       <li><a href="Boy/Boy/happiness.html">happiness</a></li>
       <li class="inherited"><a href="Boy/Boy/hashCode.html">hashCode</a></li>
-      <li><a href="Boy/Boy/intelligenceLevel.html">intelligenceLevel</a></li>
+      <li class="inherited"><a href="Person/Person/intelligence.html">intelligence</a></li>
+      <li><a href="Boy/Boy/isCommitted.html">isCommitted</a></li>
       <li><a href="Boy/Boy/minAttractivenessRequired.html">minAttractivenessRequired</a></li>
-      <li><a href="Boy/Boy/name.html">name</a></li>
+      <li class="inherited"><a href="Person/Person/name.html">name</a></li>
+      <li><a href="Boy/Boy/primaryCriterionValue.html">primaryCriterionValue</a></li>
       <li class="inherited"><a href="Boy/Boy/runtimeType.html">runtimeType</a></li>
       <li><a href="Boy/Boy/totalGiftedAmount.html">totalGiftedAmount</a></li>
-      <li><a href="Boy/Boy/type.html">type</a></li>
+      <li><a href="Boy/Boy/totalGiftedValue.html">totalGiftedValue</a></li>
     
       <li class="section-title inherited"><a href="Boy/Boy-class.html#operators">Operators</a></li>
       <li class="inherited"><a href="Boy/Boy/operator_equals.html">operator ==</a></li>
     
       <li class="section-title"><a href="Boy/Boy-class.html#instance-methods">Methods</a></li>
+      <li><a href="Boy/Boy/assignGirlfriend.html">assignGirlfriend</a></li>
       <li class="inherited"><a href="Boy/Boy/noSuchMethod.html">noSuchMethod</a></li>
       <li><a href="Boy/Boy/sendGiftBasket.html">sendGiftBasket</a></li>
-      <li><a href="Boy/Boy/toString.html">toString</a></li>
+      <li class="inherited"><a href="Boy/Boy/toString.html">toString</a></li>
       <li><a href="Boy/Boy/updateHappiness.html">updateHappiness</a></li>
     </ol>
   </div><!--/.sidebar-offcanvas-->
@@ -326,7 +387,7 @@
     <div class="container">
       <p class="text-center">
         <span class="no-break">
-          ValentinesDay 0.0.1
+          ValentinesDay 1.1.0
         </span>
         &bull;
         <span class="no-break">

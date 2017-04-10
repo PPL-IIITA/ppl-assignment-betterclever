@@ -55,7 +55,7 @@
         </ol>
         <div class="title-description">
           <h1 class="title">
-            <span class="kind">method</span> updateHappiness
+            <span class="kind">abstract method</span> updateHappiness
           </h1>
         </div>
         <ul class="subnav">
@@ -85,27 +85,29 @@
       <li class="section-title">
         <a href="Girl/Girl-class.html#instance-properties">Properties</a>
       </li>
-      <li><a href="Girl/Girl/attractiveness.html">attractiveness</a></li>
+      <li class="inherited"><a href="Person/Person/attractiveness.html">attractiveness</a></li>
       <li><a href="Girl/Girl/boyfriend.html">boyfriend</a></li>
+      <li><a href="Girl/Girl/criterion.html">criterion</a></li>
       <li><a href="Girl/Girl/happiness.html">happiness</a></li>
       <li class="inherited"><a href="Girl/Girl/hashCode.html">hashCode</a></li>
-      <li><a href="Girl/Girl/intelligenceLevel.html">intelligenceLevel</a></li>
+      <li class="inherited"><a href="Person/Person/intelligence.html">intelligence</a></li>
+      <li><a href="Girl/Girl/isCommitted.html">isCommitted</a></li>
       <li><a href="Girl/Girl/maintenanceBudget.html">maintenanceBudget</a></li>
-      <li><a href="Girl/Girl/name.html">name</a></li>
+      <li class="inherited"><a href="Person/Person/name.html">name</a></li>
+      <li><a href="Girl/Girl/primaryCriterionValue.html">primaryCriterionValue</a></li>
       <li class="inherited"><a href="Girl/Girl/runtimeType.html">runtimeType</a></li>
       <li><a href="Girl/Girl/totalReceivedGiftAmount.html">totalReceivedGiftAmount</a></li>
       <li><a href="Girl/Girl/totalReceivedGiftValue.html">totalReceivedGiftValue</a></li>
-      <li><a href="Girl/Girl/type.html">type</a></li>
     
       <li class="section-title inherited"><a href="Girl/Girl-class.html#operators">Operators</a></li>
       <li class="inherited"><a href="Girl/Girl/operator_equals.html">operator ==</a></li>
     
       <li class="section-title"><a href="Girl/Girl-class.html#instance-methods">Methods</a></li>
       <li><a href="Girl/Girl/assignBoyfriend.html">assignBoyfriend</a></li>
-      <li><a href="Girl/Girl/isCommitted.html">isCommitted</a></li>
+      <li><a href="Girl/Girl/assignNewBoyfriend.html">assignNewBoyfriend</a></li>
       <li class="inherited"><a href="Girl/Girl/noSuchMethod.html">noSuchMethod</a></li>
       <li><a href="Girl/Girl/receiveGiftBasket.html">receiveGiftBasket</a></li>
-      <li><a href="Girl/Girl/toString.html">toString</a></li>
+      <li class="inherited"><a href="Girl/Girl/toString.html">toString</a></li>
       <li><a href="Girl/Girl/updateHappiness.html">updateHappiness</a></li>
     </ol>
 
@@ -117,44 +119,12 @@
       <span class="name ">updateHappiness</span>(<wbr>)
     </section>
     <section class="desc markdown">
-      <p>Method to update happiness of a Girl according to logic</p>
+      <p>Updates the happiness of the Girl according to Logic</p>
     </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Source</span> </h2>
-      <pre class="prettyprint language-dart">void updateHappiness() {
-  if (type == &quot;Choosy&quot;) {
-    &#47;&#47;&#47; The netGiftAmount for Choosy depends on cost of gifts but luxury gifts count double
-    double netGiftAmount = totalReceivedGiftAmount[0] +
-        totalReceivedGiftAmount[1] +
-        2 * totalReceivedGiftAmount[2];
-
-    &#47;&#47;&#47; The happiness of a Choosy Girl depends Logarithmically on totalReceivedGiftAmount
-    happiness = 10 * Math.log(netGiftAmount + 10);
-  }
-
-  if (type == &quot;Normal&quot;) {
-    double netGiftAmount = totalReceivedGiftAmount[0] +
-        totalReceivedGiftAmount[1] +
-        totalReceivedGiftAmount[2];
-
-    double netGiftValue = totalReceivedGiftValue[0] +
-        totalReceivedGiftValue[1] +
-        totalReceivedGiftValue[2];
-
-    &#47;&#47;&#47; The happiness of Normal Girl depends linearly on total received gift amount + value
-    happiness = netGiftAmount + netGiftValue;
-  }
-
-  if (type == &quot;Desperate&quot;) {
-    double netGiftAmount = totalReceivedGiftAmount[0] +
-        totalReceivedGiftAmount[1] +
-        totalReceivedGiftAmount[2];
-
-    &#47;&#47;&#47; The happiness of Desperate depends exponentially on Amount of Gifts
-    happiness = Math.exp(netGiftAmount &#47; 10000);
-  }
-}</pre>
+      <pre class="prettyprint language-dart">void updateHappiness();</pre>
     </section>
 
   </div> <!-- /.main-content -->
@@ -167,7 +137,7 @@
     <div class="container">
       <p class="text-center">
         <span class="no-break">
-          ValentinesDay 0.0.1
+          ValentinesDay 1.1.0
         </span>
         &bull;
         <span class="no-break">

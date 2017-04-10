@@ -86,14 +86,17 @@
         <a href="Gift/GiftList-class.html#instance-properties">Properties</a>
       </li>
       <li class="inherited"><a href="Gift/GiftList/hashCode.html">hashCode</a></li>
+      <li><a href="Gift/GiftList/lowestAmountEssentialGift.html">lowestAmountEssentialGift</a></li>
       <li><a href="Gift/GiftList/lowestAmountGift.html">lowestAmountGift</a></li>
       <li><a href="Gift/GiftList/lowestAmountLuxuryGift.html">lowestAmountLuxuryGift</a></li>
+      <li><a href="Gift/GiftList/lowestAmountUtilityGift.html">lowestAmountUtilityGift</a></li>
       <li class="inherited"><a href="Gift/GiftList/runtimeType.html">runtimeType</a></li>
     
       <li class="section-title inherited"><a href="Gift/GiftList-class.html#operators">Operators</a></li>
       <li class="inherited"><a href="Gift/GiftList/operator_equals.html">operator ==</a></li>
     
       <li class="section-title"><a href="Gift/GiftList-class.html#instance-methods">Methods</a></li>
+      <li><a href="Gift/GiftList/getRandomGift.html">getRandomGift</a></li>
       <li class="inherited"><a href="Gift/GiftList/noSuchMethod.html">noSuchMethod</a></li>
       <li><a href="Gift/GiftList/removeGift.html">removeGift</a></li>
       <li><a href="Gift/GiftList/removeLowest.html">removeLowest</a></li>
@@ -105,7 +108,7 @@
   <div class="col-xs-12 col-sm-9 col-md-8 main-content">
     <section class="multi-line-signature">
       <span class="returntype">void</span>
-      <span class="name ">removeGift</span>(<wbr><span class="parameter" id="removeGift-param-lowestAmountLuxuryGift"><span class="type-annotation"><a href="Gift/Gift-class.html">Gift</a></span> <span class="parameter-name">lowestAmountLuxuryGift</span></span>)
+      <span class="name ">removeGift</span>(<wbr><span class="parameter" id="removeGift-param-gift"><span class="type-annotation"><a href="Gift/Gift-class.html">Gift</a></span> <span class="parameter-name">gift</span></span>)
     </section>
     <section class="desc markdown">
       <p>method to remove a gift</p>
@@ -113,8 +116,8 @@
     
     <section class="summary source-code" id="source">
       <h2><span>Source</span> </h2>
-      <pre class="prettyprint language-dart">void removeGift(Gift lowestAmountLuxuryGift) {
-  _giftList.remove(lowestAmountLuxuryGift);
+      <pre class="prettyprint language-dart">void removeGift(Gift gift) {
+  _giftList.remove(gift);
 }</pre>
     </section>
 
@@ -128,7 +131,7 @@
     <div class="container">
       <p class="text-center">
         <span class="no-break">
-          ValentinesDay 0.0.1
+          ValentinesDay 1.1.0
         </span>
         &bull;
         <span class="no-break">

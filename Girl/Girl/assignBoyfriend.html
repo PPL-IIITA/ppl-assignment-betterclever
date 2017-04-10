@@ -85,27 +85,29 @@
       <li class="section-title">
         <a href="Girl/Girl-class.html#instance-properties">Properties</a>
       </li>
-      <li><a href="Girl/Girl/attractiveness.html">attractiveness</a></li>
+      <li class="inherited"><a href="Person/Person/attractiveness.html">attractiveness</a></li>
       <li><a href="Girl/Girl/boyfriend.html">boyfriend</a></li>
+      <li><a href="Girl/Girl/criterion.html">criterion</a></li>
       <li><a href="Girl/Girl/happiness.html">happiness</a></li>
       <li class="inherited"><a href="Girl/Girl/hashCode.html">hashCode</a></li>
-      <li><a href="Girl/Girl/intelligenceLevel.html">intelligenceLevel</a></li>
+      <li class="inherited"><a href="Person/Person/intelligence.html">intelligence</a></li>
+      <li><a href="Girl/Girl/isCommitted.html">isCommitted</a></li>
       <li><a href="Girl/Girl/maintenanceBudget.html">maintenanceBudget</a></li>
-      <li><a href="Girl/Girl/name.html">name</a></li>
+      <li class="inherited"><a href="Person/Person/name.html">name</a></li>
+      <li><a href="Girl/Girl/primaryCriterionValue.html">primaryCriterionValue</a></li>
       <li class="inherited"><a href="Girl/Girl/runtimeType.html">runtimeType</a></li>
       <li><a href="Girl/Girl/totalReceivedGiftAmount.html">totalReceivedGiftAmount</a></li>
       <li><a href="Girl/Girl/totalReceivedGiftValue.html">totalReceivedGiftValue</a></li>
-      <li><a href="Girl/Girl/type.html">type</a></li>
     
       <li class="section-title inherited"><a href="Girl/Girl-class.html#operators">Operators</a></li>
       <li class="inherited"><a href="Girl/Girl/operator_equals.html">operator ==</a></li>
     
       <li class="section-title"><a href="Girl/Girl-class.html#instance-methods">Methods</a></li>
       <li><a href="Girl/Girl/assignBoyfriend.html">assignBoyfriend</a></li>
-      <li><a href="Girl/Girl/isCommitted.html">isCommitted</a></li>
+      <li><a href="Girl/Girl/assignNewBoyfriend.html">assignNewBoyfriend</a></li>
       <li class="inherited"><a href="Girl/Girl/noSuchMethod.html">noSuchMethod</a></li>
       <li><a href="Girl/Girl/receiveGiftBasket.html">receiveGiftBasket</a></li>
-      <li><a href="Girl/Girl/toString.html">toString</a></li>
+      <li class="inherited"><a href="Girl/Girl/toString.html">toString</a></li>
       <li><a href="Girl/Girl/updateHappiness.html">updateHappiness</a></li>
     </ol>
 
@@ -123,14 +125,28 @@
     <section class="summary source-code" id="source">
       <h2><span>Source</span> </h2>
       <pre class="prettyprint language-dart">void assignBoyfriend(List&lt;Boy&gt; boyList) {
-  for (Boy b in boyList) {
-    if (b.girlfriend == null) {
-      if (maintenanceBudget &lt;= b.budget &amp;&amp;
-          attractiveness &gt;= b.minAttractivenessRequired) {
-        b.girlfriend = this;
-        this.boyfriend = b;
-        Log.info(&quot;Commitment&quot;, b.name + &#39; committed to &#39; + name);
-        return;
+  if (boyfriend == null) {
+    switch (criterion) {
+      case &quot;Richness&quot;:
+        boyList.sort((a, b) =&gt; a.budget.compareTo(b.budget));
+        break;
+      case &quot;Attractiveness&quot;:
+        boyList.sort((a, b) =&gt; a.attractiveness.compareTo(b.attractiveness));
+        break;
+      case &quot;Intelligence&quot;:
+        boyList.sort((a, b) =&gt; a.intelligence.compareTo(b.intelligence));
+        break;
+    }
+
+    for (Boy b in boyList) {
+      if (b.girlfriend == null) {
+        if (maintenanceBudget &lt;= b.budget &amp;&amp;
+            attractiveness &gt;= b.minAttractivenessRequired) {
+          b.girlfriend = this;
+          this.boyfriend = b;
+          Log.info(&quot;Commitment&quot;, b.name + &#39; committed to &#39; + name);
+          return;
+        }
       }
     }
   }
@@ -147,7 +163,7 @@
     <div class="container">
       <p class="text-center">
         <span class="no-break">
-          ValentinesDay 0.0.1
+          ValentinesDay 1.1.0
         </span>
         &bull;
         <span class="no-break">

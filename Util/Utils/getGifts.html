@@ -82,6 +82,7 @@
       <li><a href="Util/Utils/getBoys.html">getBoys</a></li>
       <li><a href="Util/Utils/getGifts.html">getGifts</a></li>
       <li><a href="Util/Utils/getGirls.html">getGirls</a></li>
+      <li><a href="Util/Utils/getRandomBoyNames.html">getRandomBoyNames</a></li>
     
       <li class="section-title"><a href="Util/Utils-class.html#constructors">Constructors</a></li>
       <li><a href="Util/Utils/Utils.html">Utils</a></li>
@@ -127,11 +128,11 @@
 
     &#47;&#47;&#47; Decides the type: Essential, Luxury, Utility
     switch(values[0]){
-      case &quot;Utility&quot;: gift = new Gift.newUtility(values[1],values[2],values[3],values[4]);
+      case &quot;Utility&quot;: gift = new UtilityGift(values[1],values[2],values[3],values[4]);
       break;
-      case &quot;Essential&quot;: gift = new Gift.newEssential(values[1],values[2]);
+      case &quot;Essential&quot;: gift = new EssentialGift(values[1],values[2]);
       break;
-      case &quot;Luxury&quot;: gift = new Gift.newLuxury(values[1],values[2],values[3],values[4]);
+      case &quot;Luxury&quot;: gift = new LuxuryGift(values[1],values[2],values[3],values[4]);
       break;
     }
 
@@ -151,7 +152,7 @@
     <div class="container">
       <p class="text-center">
         <span class="no-break">
-          ValentinesDay 0.0.1
+          ValentinesDay 1.1.0
         </span>
         &bull;
         <span class="no-break">
