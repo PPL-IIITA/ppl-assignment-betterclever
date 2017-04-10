@@ -1,4 +1,4 @@
-#PPL Assignment
+# PPL Assignment
 PPL Assignment by Pranjal Paliwal (RIT2015015)
 
 ## Documentation
@@ -44,6 +44,8 @@ https://ppl-iiita.github.io/ppl-assignment-betterclever/
 1. Navigate to bin directory.
 2. Run `dart second.dart <girlcount> <boycount>` 
 
+## Question 3 - 10
+Switch to branch named "second-part" using `git checkout second-part` and see README.md
 
 ## External Libraries Used
 * dart-sdk standard libraries
