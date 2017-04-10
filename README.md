@@ -30,6 +30,9 @@ To generate documentation for project
 - run `dartdoc`
 - documentation will be available in `doc` folder in the project root
 
+## Class Diagram
+Class Diagram is available in the root of the project as `ClassDiagram.png`
+
 ## Running the Project
   
 ### Setting Up
