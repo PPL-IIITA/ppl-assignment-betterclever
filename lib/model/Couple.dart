@@ -122,6 +122,7 @@ class CoupleList {
     print("Breakup and new assignment successful");
   }
 
+  /// Method to perform breakup of couples having happiness lower than certain value
   void performBreakup2(int minHappiness, List<Boy> boyList) {
     _coupleList.sort((a, b) => b.happiness.compareTo(a.happiness));
 
@@ -145,6 +146,8 @@ class CoupleList {
     _coupleList.addAll(newCouples);
   }
 
+  /// Method to create couples by randomly selecting girls and boys
+  /// using the Random Utility made in Question 10
   void makeRandomCouples(List<Boy> boyList, List<Girl> girlList) {
     for (int i = 0; i < 20; i++) {
       Boy b = RandomReturn.getRandom(boyList);

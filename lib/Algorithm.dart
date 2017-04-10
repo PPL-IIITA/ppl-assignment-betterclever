@@ -1,7 +1,11 @@
+/// This module contains various Algorithms to make couples
+library Algorithm;
+
 import 'model/Couple.dart';
 import 'package:ValentinesDay/model/Boy.dart';
 import 'package:ValentinesDay/model/Girl.dart';
 
+/// Function to make couples by algorithm given in Question 1
 CoupleList makeCouples1(List<Boy> boyList, List<Girl> girlList) {
   print("Making couples by algorithm in Question 1");
 
@@ -16,6 +20,7 @@ CoupleList makeCouples1(List<Boy> boyList, List<Girl> girlList) {
   return coupleList;
 }
 
+/// Function to make couples by algorithm given in Question 1
 CoupleList makeCouples2(List<Boy> boyList, List<Girl> girlList) {
   print("Making couples by algorithm in Question 5");
 

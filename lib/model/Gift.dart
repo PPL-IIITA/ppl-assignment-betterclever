@@ -21,12 +21,14 @@ abstract class Gift implements TopSelectable {
     return price;
   }
 
+  /// Constructor to create a new Gift
   Gift(this.price, this.value);
 
 }
 
 class EssentialGift extends Gift {
 
+  /// Constructor to create an new Essential Gift
   EssentialGift(double price, double value) : super(price, value);
 
 }
@@ -39,6 +41,7 @@ class UtilityGift extends Gift {
   /// Utility Class of a Utility Gift. null for others.
   String utilityClass;
 
+  /// Constructor to create a new Utility Gift
   UtilityGift(double price, double value, this.utilityValue,
       this.utilityClass) : super(price, value);
 
@@ -52,6 +55,7 @@ class LuxuryGift extends Gift {
   /// Luxury rating of a Luxury Gift on a scale of 1-10.
   int luxuryRating;
 
+  /// Constructor to create a new Luxury Gift
   LuxuryGift(double price, double value, this.difficultyToObtain,
       this.luxuryRating) :super(price, value);
 
@@ -82,6 +86,7 @@ class GiftBasket {
     return d;
   }
 
+  /// dart style getter to get Total Value of the Basket
   double get totalValue {
     double d = 0.0;
     for (Gift g in _giftList) {
@@ -157,6 +162,7 @@ class GiftList {
     _giftList.remove(gift);
   }
 
+  /// Method to get a random Gift using Random Utility made in Question 10
   Gift getRandomGift() {
     return RandomReturn.getRandom(_giftList);
   }

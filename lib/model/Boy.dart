@@ -50,6 +50,7 @@ abstract class Boy extends Person implements TopSelectable {
   /// Sends a Gift Basket to the Girlfriend
   void sendGiftBasket(GiftList gifts);
 
+  /// Method to assign Girlfriend to a Boy as per logic
   void assignGirlfriend(List<Girl> girlList) {
     if (girlfriend == null) {
       for (Girl g in girlList) {
@@ -70,6 +71,7 @@ abstract class Boy extends Person implements TopSelectable {
 /// Class to Represent a Miser Boy
 class MiserBoy extends Boy {
 
+  /// Constructor to create a new Miser Boy
   MiserBoy(String name, int attractiveness, int intelligence,
       int minAttractivenessRequired, double budget) :
         super(name, attractiveness, intelligence, minAttractivenessRequired,
@@ -102,12 +104,13 @@ class MiserBoy extends Boy {
   @override
   void updateHappiness() {
     happiness = budget - totalGiftedAmount;
-    //print(happiness);
   }
 }
 
+/// Class to Represent a Generous Boy
 class GenerousBoy extends Boy {
 
+  /// Constructor to create a new Generous Boy
   GenerousBoy(String name, int attractiveness, int intelligence,
       int minAttractivenessRequired, double budget) :
         super(name, attractiveness, intelligence, minAttractivenessRequired,
@@ -147,8 +150,10 @@ class GenerousBoy extends Boy {
 
 }
 
+/// Class to Represent a Geek Boy
 class GeekBoy extends Boy {
 
+  /// Constructor to create a new Geek Boy
   GeekBoy(String name, int attractiveness, int intelligence,
       int minAttractivenessRequired, double budget) :
         super(name, attractiveness, intelligence, minAttractivenessRequired,

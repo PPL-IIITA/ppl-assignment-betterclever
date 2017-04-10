@@ -1,11 +1,5 @@
-#PPL Assignment
+# PPL Assignment
 PPL Assignment by Pranjal Paliwal (RIT2015015)
-
-## Documentation
-Documnetation is generated using dartdoc (https://github.com/dart-lang/dartdoc)
-
-It is live on Github Pages and can be viewed here: 
-https://ppl-iiita.github.io/ppl-assignment-betterclever/
 
 ## Setting up dartlang on your system
 
@@ -15,7 +9,7 @@ https://ppl-iiita.github.io/ppl-assignment-betterclever/
 * Windows: Install using Chocolatey Package Manager: `cinst dart-sdk`
 * macOS: Install using Homebrew: 
   ```
-  $ brew tap dart-lang/dart`  
+  $ brew tap dart-lang/dart
   $ brew install dart
   ```
   
@@ -24,7 +18,18 @@ https://ppl-iiita.github.io/ppl-assignment-betterclever/
 2. macOS El Capitan
 3. Arch Linux (Bleeding Edge)
 4. Ubuntu 16.10
-  
+
+## Documentation
+Documentation is generated using dartdoc (https://github.com/dart-lang/dartdoc)
+
+It is live on Github Pages and can be viewed here:
+https://ppl-iiita.github.io/ppl-assignment-betterclever/
+
+To generate documentation for project
+- navigate to project root
+- run `dartdoc`
+- documentation will be available in `doc` folder in the project root
+
 ## Running the Project
   
 ### Setting Up
@@ -33,17 +38,31 @@ https://ppl-iiita.github.io/ppl-assignment-betterclever/
 3. Run `pub get`
 
 ### Generating Random Input in csv Files
-1. Navigate to bin directory.
-2. Run `dart generateItemCSV.dart <boycount> <girlcount> <giftcount>`
+1. Run `dart bin/generateItemCSV.dart <boycount> <girlcount> <giftcount>`
 
-### First Question
-1. Navigate to bin directory.
-2. Run `dart first.dart <girlcount> <boycount>`
+### Third Question
+1. Run `dart bin/third.dart <girlcount> <boycount>`
 
-### Second Question
-1. Navigate to bin directory.
-2. Run `dart second.dart <girlcount> <boycount>` 
+### Fourth Question
+1. Run `dart bin/fourth.dart <girlcount> <boycount>`
 
+### Fifth Question
+1. Run `dart bin/fifth.dart <girlcount> <boycount>`
+
+### Sixth Question
+1. Run `dart bin/sixth.dart <girlcount> <boycount>`
+
+### Seventh Question
+1. Run `dart bin/seventh.dart <girlcount> <boycount>`
+
+### Eighth Question
+1. Run `dart bin/eighth.dart <girlcount> <boycount>`
+
+### Ninth Question
+1. Run `dart bin/ninth.dart <girlcount> <boycount>`
+
+### Tenth Question
+1. Run `dart bin/tenth.dart <girlcount> <boycount>`
 
 ## External Libraries Used
 * dart-sdk standard libraries

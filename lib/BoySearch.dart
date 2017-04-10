@@ -1,17 +1,23 @@
+/// This module facilitates searching a boy by name using various Algorithms
 library BoySearch;
 
 import 'package:ValentinesDay/model/Boy.dart';
 import 'dart:collection';
 
+/// Base class for searching a Boy according t various techniques
 abstract class BoySearch {
 
+  /// List of all Boys
   List<Boy> allBoys;
 
+  /// Constructor to initialize a BoySearch Object
   BoySearch(this.allBoys);
 
+  /// Method to search a boy by name
   void searchForBoy(String name);
 }
 
+/// Class for searching a boy using Linear Search
 class LinearBoySearch extends BoySearch {
 
   LinearBoySearch(List<Boy> allBoys) : super(allBoys);
@@ -38,8 +44,10 @@ class LinearBoySearch extends BoySearch {
   }
 }
 
+/// Class to search boy using Binary Search
 class BinaryBoySearch extends BoySearch {
 
+  /// Constructor to initiate BinaryBoySearch
   BinaryBoySearch(List<Boy> allBoys) : super(allBoys);
 
   @override
@@ -51,6 +59,7 @@ class BinaryBoySearch extends BoySearch {
     }
   }
 
+  /// private method to implement Binary Search
   bool _binarySearch(String name, int start, int end) {
     if (end < start) {
       return false;
@@ -84,10 +93,13 @@ class BinaryBoySearch extends BoySearch {
 
 }
 
+/// Class for searching a boy using Hash Map
 class HashBoySearch extends BoySearch {
 
+  /// private HashMap to map boys by their names
   HashMap<String, Boy> _map;
 
+  /// Constructor to initialize Hash Map Search
   HashBoySearch(List<Boy> allBoys) : super(allBoys) {
     _map = new HashMap.fromIterable(allBoys,
         key: (item) => item.name,

@@ -1,5 +1,7 @@
+/// This module contains class to represent a person
 library Person;
 
+/// Class to represent a Person
 abstract class Person {
 
   /// Name of Person

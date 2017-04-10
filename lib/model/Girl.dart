@@ -25,7 +25,7 @@ abstract class Girl extends Person implements TopSelectable {
   String criterion;
 
   @override
-  num get primaryCriterionValue{
+  num get primaryCriterionValue {
     return attractiveness;
   }
 
@@ -143,11 +143,12 @@ abstract class Girl extends Person implements TopSelectable {
 
 }
 
+/// Class to represent a Choosy Girl
 class ChoosyGirl extends Girl {
 
+  /// Constructor to create a new Choosy Girl
   ChoosyGirl(String name, int attractiveness, int intelligence,
-      double maintenanceBudget,
-      String criterion)
+      double maintenanceBudget, String criterion)
       : super(name, attractiveness, intelligence, maintenanceBudget, criterion);
 
 
@@ -163,11 +164,12 @@ class ChoosyGirl extends Girl {
   }
 }
 
+/// Class to represent a Normal Girl
 class NormalGirl extends Girl {
 
+  /// Constructor to create a new Choosy Girl
   NormalGirl(String name, int attractiveness, int intelligence,
-      double maintenanceBudget,
-      String criterion)
+      double maintenanceBudget, String criterion)
       : super(name, attractiveness, intelligence, maintenanceBudget, criterion);
 
   @override
@@ -185,11 +187,12 @@ class NormalGirl extends Girl {
   }
 }
 
+/// Class to represent a Desperate Girl
 class DesperateGirl extends Girl {
 
+  /// Constructor to create a new Desperate Girl
   DesperateGirl(String name, int attractiveness, int intelligence,
-      double maintenanceBudget,
-      String criterion)
+      double maintenanceBudget, String criterion)
       : super(name, attractiveness, intelligence, maintenanceBudget, criterion);
 
   @override
