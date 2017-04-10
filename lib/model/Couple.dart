@@ -4,9 +4,10 @@ library Couple;
 * Created by betterclever
 * */
 
+import 'package:ValentinesDay/RandomReturn.dart';
 import 'package:ValentinesDay/model/Boy.dart';
 import 'package:ValentinesDay/model/Gift.dart';
-import 'package:ValentinesDay/model/GiftSelector.dart';
+import 'package:ValentinesDay/GiftSelector.dart';
 import 'package:ValentinesDay/model/Girl.dart';
 
 /// Internal Class to Represent a couple
@@ -142,6 +143,19 @@ class CoupleList {
     }
 
     _coupleList.addAll(newCouples);
+  }
+
+  void makeRandomCouples(List<Boy> boyList, List<Girl> girlList) {
+    for (int i = 0; i < 20; i++) {
+      Boy b = RandomReturn.getRandom(boyList);
+      Girl g = RandomReturn.getRandom(girlList);
+      if (b.budget > g.maintenanceBudget &&
+          !b.isCommitted && !g.isCommitted) {
+        b.girlfriend = g;
+        g.boyfriend = b;
+        addCouple(b, g);
+      }
+    }
   }
 
 }

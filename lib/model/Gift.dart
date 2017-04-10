@@ -1,6 +1,7 @@
 /// This library contains Gift Class and related wrappers for List implementation
 library Gift;
 
+import 'package:ValentinesDay/RandomReturn.dart';
 import 'package:ValentinesDay/TopKPicker.dart';
 /*
 * Created by betterclever
@@ -11,6 +12,7 @@ abstract class Gift implements TopSelectable {
 
   /// Cost of a Gift
   double price;
+
   /// Value of a Gift
   double value;
 
@@ -23,7 +25,7 @@ abstract class Gift implements TopSelectable {
 
 }
 
-class EssentialGift extends Gift{
+class EssentialGift extends Gift {
 
   EssentialGift(double price, double value) : super(price, value);
 
@@ -33,6 +35,7 @@ class UtilityGift extends Gift {
 
   /// Utility Value of Utility Gift. 0 for others.
   double utilityValue;
+
   /// Utility Class of a Utility Gift. null for others.
   String utilityClass;
 
@@ -45,6 +48,7 @@ class LuxuryGift extends Gift {
 
   /// Difficulty rating of a Luxury Gift on a scale of 1-10.
   int difficultyToObtain;
+
   /// Luxury rating of a Luxury Gift on a scale of 1-10.
   int luxuryRating;
 
@@ -52,7 +56,6 @@ class LuxuryGift extends Gift {
       this.luxuryRating) :super(price, value);
 
 }
-
 
 
 /// Custom Wrapper class to represent a GiftBasket sent by Boy to Girl. Wrapped
@@ -152,6 +155,10 @@ class GiftList {
   /// method to remove a gift
   void removeGift(Gift gift) {
     _giftList.remove(gift);
+  }
+
+  Gift getRandomGift() {
+    return RandomReturn.getRandom(_giftList);
   }
 
 }

@@ -49,3 +49,29 @@ class DifferentGiftSelector extends GiftSelector {
 
   }
 }
+
+class RandomGiftSelector extends GiftSelector{
+
+  RandomGiftSelector(GiftList giftList) : super(giftList);
+
+  @override
+  void sendGiftBasket(Boy b) {
+    GiftBasket basket = new GiftBasket();
+    while(basket.totalWorth > b.girlfriend.maintenanceBudget){
+      Gift g = _giftList.getRandomGift();
+      basket.addGift(g);
+      _giftList.removeGift(g);
+    }
+
+    b.totalGiftedAmount += basket.totalWorth;
+    b.totalGiftedValue += basket.totalValue;
+
+    Log.info("GiftBasket", "Boy: " + b.name + " sent giftbasket with gift amount "
+        + basket.totalWorth.toString() + "to Girl: " + b.girlfriend.name);
+
+    b.girlfriend.receiveGiftBasket(basket);
+    b.updateHappiness();
+
+  }
+
+}
